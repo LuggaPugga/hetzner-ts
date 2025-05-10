@@ -12,6 +12,13 @@ import type {
   ListNetworkActionsParams,
 } from "./types"
 
+/**
+ * Network Actions API
+ *
+ * Network actions are used to manage networks.
+ * https://docs.hetzner.cloud/#networks-actions
+ *
+ */
 export class NetworkActions extends BaseAPI {
   /**
    * List all actions for Networks
