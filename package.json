@@ -1,0 +1,21 @@
+{
+  "name": "hetznerts",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "vitest",
+    "test:firewalls": "vitest src/firewalls/firewalls.test.ts",
+    "test:floating-ips": "vitest src/floating-ips/floating-ips.test.ts",
+    "test:load-balancers": "vitest src/load-balancers/load-balancers.test.ts",
+    "test:servers": "vitest src/servers/servers.test.ts",
+    "test:volumes": "vitest src/volumes/volumes.test.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "vitest": "^3.1.3"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
+}
