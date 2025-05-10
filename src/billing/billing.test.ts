@@ -5,12 +5,12 @@ const workingHetzner = new HetznerAPI(process.env.HETZNER_API_KEY as string)
 const invalidHetzner = new HetznerAPI("invalid-token")
 
 test("get billing throws error if token is invalid", async () => {
-  const result = await invalidHetzner.billing().get()
+  const result = await invalidHetzner.billing.get()
   expect(result.success).toBe(false)
 })
 
 test("get billing is in type Billing", async () => {
-  const result = await workingHetzner.billing().get()
+  const result = await workingHetzner.billing.get()
   expect(result.success).toBe(true)
   expect(result.response).toBeTypeOf("object")
 

@@ -9,13 +9,13 @@ function generateUniqueName(prefix: string = "") {
 }
 
 test("list volumes throws error if token is invalid", async () => {
-  const result = await invalidHetzner.volumes().list()
+  const result = await invalidHetzner.volumes.list()
   expect(result.success).toBe(false)
 })
 
 test("create a server and verify its properties", async () => {
   const name = generateUniqueName("test-volume")
-  const result = await workingHetzner.volumes().create({
+  const result = await workingHetzner.volumes.create({
     name,
     size: 10,
     location: "fsn1",
@@ -30,7 +30,7 @@ test("create a server and verify its properties", async () => {
     expect(result.response.volume.status).toBeTypeOf("string")
     expect(result.response.volume.created).toBeTypeOf("string")
 
-    const listResult = await workingHetzner.volumes().list()
+    const listResult = await workingHetzner.volumes.list()
     expect(listResult.success).toBe(true)
     if (listResult.success) {
       expect(listResult.response.volumes.length).toBeGreaterThan(0)
@@ -42,7 +42,7 @@ test("create a server and verify its properties", async () => {
 })
 
 test("get a volume and verify its properties", async () => {
-  const result = await workingHetzner.volumes().get(volumeToDelete)
+  const result = await workingHetzner.volumes.get(volumeToDelete)
   expect(result.success).toBe(true)
   if (result.success) {
     expect(result.response.volume.id).toBeTypeOf("number")
@@ -54,7 +54,7 @@ test("get a volume and verify its properties", async () => {
 
 test("update a volume and verify its properties", async () => {
   const newName = generateUniqueName("test-volume")
-  const result = await workingHetzner.volumes().update(volumeToDelete, {
+  const result = await workingHetzner.volumes.update(volumeToDelete, {
     name: newName,
   })
   expect(result.success).toBe(true)
@@ -64,7 +64,7 @@ test("update a volume and verify its properties", async () => {
 })
 
 test("resize a volume", async () => {
-  const result = await workingHetzner.volumes().actions.resize(volumeToDelete, {
+  const result = await workingHetzner.volumes.actions.resize(volumeToDelete, {
     size: 12,
   })
   expect(result.success).toBe(true)
@@ -74,6 +74,6 @@ test("resize a volume", async () => {
 })
 
 test("delete a volume", async () => {
-  const deleteResult = await workingHetzner.volumes().delete(volumeToDelete)
+  const deleteResult = await workingHetzner.volumes.delete(volumeToDelete)
   expect(deleteResult.success).toBe(true)
 })

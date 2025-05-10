@@ -9,13 +9,13 @@ function generateUniqueName(prefix: string = "") {
 }
 
 test("list servers throws error if token is invalid", async () => {
-  const result = await invalidHetzner.servers().list()
+  const result = await invalidHetzner.servers.list()
   expect(result.success).toBe(false)
 })
 
 test("create a server and verify its properties", async () => {
   const name = generateUniqueName("test-server")
-  const result = await workingHetzner.servers().create({
+  const result = await workingHetzner.servers.create({
     name,
     server_type: "cx22",
     image: "ubuntu-22.04",
@@ -33,7 +33,7 @@ test("create a server and verify its properties", async () => {
     expect(result.response.server.public_net).toBeTypeOf("object")
     expect(result.response.server.private_net).toBeTypeOf("object")
 
-    const listResult = await workingHetzner.servers().list()
+    const listResult = await workingHetzner.servers.list()
     expect(listResult.success).toBe(true)
     if (listResult.success) {
       expect(listResult.response.servers.length).toBeGreaterThan(0)
@@ -42,11 +42,11 @@ test("create a server and verify its properties", async () => {
       ).toBeDefined()
     }
 
-    await workingHetzner.servers().delete(result.response.server.id)
+    await workingHetzner.servers.delete(result.response.server.id)
   }
 })
 
 test("delete a server", async () => {
-  const deleteResult = await workingHetzner.servers().delete(serverToDelete)
+  const deleteResult = await workingHetzner.servers.delete(serverToDelete)
   expect(deleteResult.success).toBe(true)
 })

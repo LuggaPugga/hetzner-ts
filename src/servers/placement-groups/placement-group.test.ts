@@ -9,13 +9,13 @@ function generateUniqueName(prefix: string = "") {
 }
 
 test("list placement groups throws error if token is invalid", async () => {
-  const result = await invalidHetzner.servers().placementGroups.list()
+  const result = await invalidHetzner.servers.placementGroups.list()
   expect(result.success).toBe(false)
 })
 
 test("create a placement group and verify its properties", async () => {
   const name = generateUniqueName("test-placement-group")
-  const result = await workingHetzner.servers().placementGroups.create({
+  const result = await workingHetzner.servers.placementGroups.create({
     name,
     type: "spread",
   })
@@ -30,7 +30,7 @@ test("create a placement group and verify its properties", async () => {
     expect(result.response.placement_group.created).toBeTypeOf("string")
     expect(result.response.placement_group.type).toBeTypeOf("string")
 
-    const listResult = await workingHetzner.servers().placementGroups.list()
+    const listResult = await workingHetzner.servers.placementGroups.list()
     expect(listResult.success).toBe(true)
     if (listResult.success) {
       expect(listResult.response.placement_groups.length).toBeGreaterThan(0)
@@ -45,7 +45,7 @@ test("create a placement group and verify its properties", async () => {
 
 test("update a placement group and verify its properties", async () => {
   const name = generateUniqueName("test-placement-group")
-  const result = await workingHetzner.servers().placementGroups.update(placementGroupToDelete, {
+  const result = await workingHetzner.servers.placementGroups.update(placementGroupToDelete, {
     name,
   })
   expect(result.success).toBe(true)
@@ -55,6 +55,6 @@ test("update a placement group and verify its properties", async () => {
 })
 
 test("delete a placement group", async () => {
-  const deleteResult = await workingHetzner.servers().placementGroups.delete(placementGroupToDelete)
+  const deleteResult = await workingHetzner.servers.placementGroups.delete(placementGroupToDelete)
   expect(deleteResult.success).toBe(true)
 })

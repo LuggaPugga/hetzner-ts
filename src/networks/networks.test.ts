@@ -9,13 +9,13 @@ function generateUniqueName(prefix: string = "") {
 }
 
 test("list networks throws error if token is invalid", async () => {
-  const result = await invalidHetzner.networks().list()
+  const result = await invalidHetzner.networks.list()
   expect(result.success).toBe(false)
 })
 
 test("create a network and verify its properties", async () => {
   const name = generateUniqueName("test-network")
-  const result = await workingHetzner.networks().create({
+  const result = await workingHetzner.networks.create({
     name,
     ip_range: "10.0.0.0/24",
   })
@@ -35,7 +35,7 @@ test("create a network and verify its properties", async () => {
     expect(result.response.network.protection).toBeTypeOf("object")
     expect(result.response.network.labels).toBeTypeOf("object")
 
-    const listResult = await workingHetzner.networks().list()
+    const listResult = await workingHetzner.networks.list()
     expect(listResult.success).toBe(true)
     if (listResult.success) {
       expect(listResult.response.networks.length).toBeGreaterThan(0)
@@ -47,7 +47,7 @@ test("create a network and verify its properties", async () => {
 })
 
 test("get a network and verify its properties", async () => {
-  const result = await workingHetzner.networks().get(networkToDelete)
+  const result = await workingHetzner.networks.get(networkToDelete)
   expect(result.success).toBe(true)
   if (result.success) {
     expect(result.response.network.id).toBeTypeOf("number")
@@ -65,7 +65,7 @@ test("get a network and verify its properties", async () => {
 
 test("update a network and verify its properties", async () => {
   const newName = generateUniqueName("test-network")
-  const result = await workingHetzner.networks().update(networkToDelete, {
+  const result = await workingHetzner.networks.update(networkToDelete, {
     name: newName,
   })
   expect(result.success).toBe(true)
@@ -75,6 +75,6 @@ test("update a network and verify its properties", async () => {
 })
 
 test("delete a network", async () => {
-  const deleteResult = await workingHetzner.networks().delete(networkToDelete)
+  const deleteResult = await workingHetzner.networks.delete(networkToDelete)
   expect(deleteResult.success).toBe(true)
 })

@@ -9,13 +9,13 @@ function generateUniqueName(prefix: string = "") {
 }
 
 test("list servers throws error if token is invalid", async () => {
-  const result = await invalidHetzner.servers().primaryIP.list()
+  const result = await invalidHetzner.servers.primaryIP.list()
   expect(result.success).toBe(false)
 })
 
 test("create and delete a server", async () => {
   const name = generateUniqueName("test-server")
-  const result = await workingHetzner.servers().primaryIP.create({
+  const result = await workingHetzner.servers.primaryIP.create({
     name,
     type: "ipv4",
     assignee_type: "server",
@@ -30,7 +30,7 @@ test("create and delete a server", async () => {
     expect(result.response.primary_ip.name).toBeTypeOf("string")
     expect(result.response.primary_ip.created).toBeTypeOf("string")
 
-    const listResult = await workingHetzner.servers().primaryIP.list()
+    const listResult = await workingHetzner.servers.primaryIP.list()
     expect(listResult.success).toBe(true)
     if (listResult.success) {
       expect(listResult.response.primary_ips.length).toBeGreaterThan(0)
@@ -41,9 +41,9 @@ test("create and delete a server", async () => {
       ).toBeDefined()
     }
 
-    const deleteResult = await workingHetzner
-      .servers()
-      .primaryIP.delete(result.response.primary_ip.id)
+    const deleteResult = await workingHetzner.servers.primaryIP.delete(
+      result.response.primary_ip.id,
+    )
     expect(deleteResult.success).toBe(true)
   }
 })
