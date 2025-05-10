@@ -17,6 +17,13 @@ import type {
   UpdateServiceLoadBalancerParams,
 } from "./types"
 
+/**
+ * Load Balancer Actions API
+ *
+ * Load balancer actions are used to manage load balancers.
+ * https://docs.hetzner.cloud/#load-balancers-actions
+ *
+ */
 export class LoadBalancerActions extends BaseAPI {
   /**
    * List all global actions for Load Balancers
