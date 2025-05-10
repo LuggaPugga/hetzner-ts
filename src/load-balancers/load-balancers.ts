@@ -16,6 +16,13 @@ import type {
   UpdateLoadBalancerParams,
 } from "./types"
 
+/**
+ * Load Balancers API
+ *
+ * Load Balancers can be used to load balance traffic between multiple servers.
+ * https://docs.hetzner.cloud/#load-balancers
+ *
+ */
 export class LoadBalancers extends BaseAPI {
   private _actions: LoadBalancerActions | null = null
 
