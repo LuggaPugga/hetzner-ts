@@ -4,12 +4,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "vitest",
-    "test:firewalls": "vitest src/firewalls/firewalls.test.ts",
-    "test:floating-ips": "vitest src/floating-ips/floating-ips.test.ts",
-    "test:load-balancers": "vitest src/load-balancers/load-balancers.test.ts",
-    "test:servers": "vitest src/servers/servers.test.ts",
-    "test:volumes": "vitest src/volumes/volumes.test.ts"
+    "test": "vitest"
   },
   "devDependencies": {
     "@types/bun": "latest",
