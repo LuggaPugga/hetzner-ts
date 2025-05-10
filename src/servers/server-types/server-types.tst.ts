@@ -5,12 +5,12 @@ const workingHetzner = new HetznerAPI(process.env.HETZNER_API_KEY as string)
 const invalidHetzner = new HetznerAPI("invalid-token")
 
 test("list server types throws error if token is invalid", async () => {
-  const result = await invalidHetzner.servers().serverTypes.list()
+  const result = await invalidHetzner.servers.serverTypes.list()
   expect(result.success).toBe(false)
 })
 
 test("list server types", async () => {
-  const result = await workingHetzner.servers().serverTypes.list()
+  const result = await workingHetzner.servers.serverTypes.list()
   console.log(result)
   expect(result.success).toBe(true)
   if (result.success) {
@@ -27,7 +27,7 @@ test("list server types", async () => {
     expect(result.response.server_types[0]?.storage_type).toBeTypeOf("string")
     expect(result.response.server_types[0]?.cpu_type).toBeTypeOf("string")
 
-    const listResult = await workingHetzner.servers().serverTypes.list()
+    const listResult = await workingHetzner.servers.serverTypes.list()
     expect(listResult.success).toBe(true)
     if (listResult.success) {
       expect(listResult.response.server_types.length).toBeGreaterThan(0)
@@ -41,7 +41,7 @@ test("list server types", async () => {
 })
 
 test("get a server type and verify its properties", async () => {
-  const result = await workingHetzner.servers().serverTypes.get(1)
+  const result = await workingHetzner.servers.serverTypes.get(1)
   expect(result.success).toBe(true)
   if (result.success) {
     expect(result.response.server_type.id).toBeTypeOf("number")
