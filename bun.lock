@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "hetznerts",
+      "name": "hetzner-ts",
       "devDependencies": {
         "@types/bun": "latest",
         "prettier": "^3.5.3",
