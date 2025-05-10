@@ -23,3 +23,21 @@ test("get load balancer throws error if ", async () => {
   const result = await workingHetzner.loadBalancers.get(999999999)
   expect(result.success).toBe(false)
 })
+
+test("get load balancer returns a load balancer", async () => {
+  const result = await workingHetzner.loadBalancers.list()
+  expect(result.success).toBe(true)
+  expect(result.response).toBeTypeOf("object")
+  if (result.success) {
+    const loadBalancerId = result.response.load_balancers?.[0]?.id
+    if (!loadBalancerId) {
+      throw new Error("No load balancer ID found")
+    }
+    const result2 = await workingHetzner.loadBalancers.get(loadBalancerId)
+    expect(result2.success).toBe(true)
+    expect(result2.response).toBeTypeOf("object")
+    if (result2.success) {
+      expect(result2.response.load_balancer).toBeTypeOf("object")
+    }
+  }
+})
