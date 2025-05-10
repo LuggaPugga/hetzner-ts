@@ -10,51 +10,51 @@ import { LoadBalancers } from "./load-balancers/load-balancers"
 import { Actions } from "./actions/actions"
 import { Servers } from "./servers/servers"
 export class HetznerAPI extends BaseAPI {
-  actions() {
+  get actions() {
     return new Actions(this.token)
   }
 
-  billing() {
+  get billing() {
     return new Billing(this.token)
   }
 
-  certificates() {
+  get certificates() {
     return new Certificates(this.token)
   }
 
-  datacenters() {
+  get datacenters() {
     return new Datacenters(this.token)
   }
 
-  firewalls() {
+  get firewalls() {
     return new Firewalls(this.token)
   }
 
-  floatingIps() {
+  get floatingIps() {
     return new FloatingIPs(this.token)
   }
 
-  loadBalancers() {
+  get loadBalancers() {
     return new LoadBalancers(this.token)
   }
 
-  locations() {
+  get locations() {
     return new Locations(this.token)
   }
 
-  networks() {
+  get networks() {
     return new Networks(this.token)
   }
 
-  servers() {
+  get servers() {
     return new Servers(this.token)
   }
 
-  sshKeys() {
+  get sshKeys() {
     return new SSHKeys(this.token)
   }
 
-  volumes() {
+  get volumes() {
     return new Volumes(this.token)
   }
 }
