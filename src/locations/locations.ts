@@ -16,6 +16,13 @@ export interface ListDatacentersParams {
   per_page?: number
 }
 
+/**
+ * Locations API
+ *
+ * Datacenters are organized by Locations. Datacenters in the same Location are connected with very low latency links.
+ * https://docs.hetzner.cloud/#locations
+ *
+ */
 export class Locations extends BaseAPI {
   /**
    * List all locations with optional filtering and pagination
