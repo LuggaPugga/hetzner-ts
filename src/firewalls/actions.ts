@@ -51,8 +51,8 @@ export class FirewallActions extends BaseAPI {
   async get(
     firewallId: number,
     actionId: number,
-  ): Promise<{ success: true; response: FirewallAction } | { success: false; response: APIError }> {
-    return this.request<FirewallAction>(`/firewalls/${firewallId}/actions/${actionId}`)
+  ): Promise<{ success: true; response: { action: FirewallAction } } | { success: false; response: APIError }> {
+    return this.request<{ action: FirewallAction }>(`/firewalls/${firewallId}/actions/${actionId}`)
   }
 
   /**
@@ -61,8 +61,8 @@ export class FirewallActions extends BaseAPI {
   async applyToResources(
     firewallId: number,
     resources: FirewallResource[],
-  ): Promise<{ success: true; response: FirewallAction } | { success: false; response: APIError }> {
-    return this.request<FirewallAction>(`/firewalls/${firewallId}/actions/apply_to_resources`, {
+  ): Promise<{ success: true; response: { action: FirewallAction } } | { success: false; response: APIError }> {
+    return this.request<{ action: FirewallAction }>(`/firewalls/${firewallId}/actions/apply_to_resources`, {
       method: "POST",
       body: JSON.stringify({ apply_to: resources }),
     })
@@ -74,8 +74,8 @@ export class FirewallActions extends BaseAPI {
   async removeFromResources(
     firewallId: number,
     resources: FirewallResource[],
-  ): Promise<{ success: true; response: FirewallAction } | { success: false; response: APIError }> {
-    return this.request<FirewallAction>(`/firewalls/${firewallId}/actions/remove_from_resources`, {
+  ): Promise<{ success: true; response: { action: FirewallAction } } | { success: false; response: APIError }> {
+    return this.request<{ action: FirewallAction }>(`/firewalls/${firewallId}/actions/remove_from_resources`, {
       method: "POST",
       body: JSON.stringify({ remove_from: resources }),
     })
@@ -87,8 +87,8 @@ export class FirewallActions extends BaseAPI {
   async setRules(
     firewallId: number,
     rules: FirewallRule[] | [], // Pass an empty array to remove all rules
-  ): Promise<{ success: true; response: FirewallAction } | { success: false; response: APIError }> {
-    return this.request<FirewallAction>(`/firewalls/${firewallId}/actions/set_rules`, {
+  ): Promise<{ success: true; response: { action: FirewallAction } } | { success: false; response: APIError }> {
+    return this.request<{ action: FirewallAction }>(`/firewalls/${firewallId}/actions/set_rules`, {
       method: "POST",
       body: JSON.stringify({ rules }),
     })
