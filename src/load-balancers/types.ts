@@ -1,5 +1,4 @@
 import type { BaseAction, Meta } from "../types"
-import type { LocationPriceEntry } from "../billing/types" // Reusing from billing types
 
 // --- Base Load Balancer Structures ---
 export interface LoadBalancerLocation {
@@ -109,19 +108,6 @@ export interface LoadBalancerTarget {
   targets?: LoadBalancerResolvedTarget[]
 }
 
-// --- Load Balancer Type (as part of LoadBalancer object) ---
-export interface LoadBalancerTypeInfo {
-  id: number
-  name: string
-  description: string
-  max_connections: number
-  max_services: number
-  max_targets: number
-  max_assigned_certificates: number
-  deprecated: string | null // ISO 8601 or null
-  prices: LocationPriceEntry[]
-}
-
 // --- Main Load Balancer Object ---
 export interface LoadBalancer {
   id: number
@@ -129,7 +115,7 @@ export interface LoadBalancer {
   public_net: LoadBalancerPublicNet
   private_net: LoadBalancerPrivateNet[]
   location: LoadBalancerLocation
-  load_balancer_type: LoadBalancerTypeInfo
+  load_balancer_type: LoadBalancerType
   protection: LoadBalancerProtection
   labels: Record<string, string>
   created: string // ISO 8601
@@ -266,17 +252,7 @@ export interface ChangeProtectionLoadBalancerParams {
 }
 
 export interface ChangeTypeLoadBalancerParams {
-  load_balancer_type: string | number // ID or name of the new type
-}
-
-// --- Load Balancer Types API (distinct from LoadBalancerTypeInfo) ---
-export interface LoadBalancerType extends LoadBalancerTypeInfo {
-  // It's the same structure as LoadBalancerTypeInfo, but represents a full resource
-}
-
-export interface LoadBalancerTypesResponse {
-  load_balancer_types: LoadBalancerType[]
-  meta?: Meta
+  load_balancer_type: string | number
 }
 
 export interface ListLoadBalancerTypesParams {
@@ -293,11 +269,39 @@ export interface LoadBalancerActionResponse {
   action: LoadBalancerAction
 }
 
-export interface LoadBalancerTypeResponse {
-  load_balancer_type: LoadBalancerType
-}
-
 export interface CreateLoadBalancerResponse {
   load_balancer: LoadBalancer
   action: LoadBalancerAction
+}
+
+export interface LoadBalancerType {
+  id: number
+  name: string
+  description: string
+  max_connections: number
+  max_services: number
+  max_targets: number
+  max_assigned_certificates: number
+  deprecated: string
+  prices: {
+    location: string
+    price_hourly: {
+      net: string
+      gross: string
+    }
+    price_monthly: {
+      net: string
+      gross: string
+    }
+    included_traffic: number
+    price_per_tb_traffic: {
+      net: string
+      gross: string
+    }
+  }[]
+}
+
+export interface LoadBalancerTypesResponse {
+  load_balancer_types: LoadBalancerType[]
+  meta?: Meta
 }
