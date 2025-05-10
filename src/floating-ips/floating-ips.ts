@@ -17,7 +17,7 @@ export class FloatingIPs extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListFloatingIPsParams
+    params?: ListFloatingIPsParams,
   ): Promise<
     { success: true; response: FloatingIPsResponse } | { success: false; response: APIError }
   > {
@@ -39,7 +39,7 @@ export class FloatingIPs extends BaseAPI {
    * @param id The Floating IP ID
    */
   async get(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: FloatingIP } | { success: false; response: APIError }> {
     return this.request<FloatingIP>(`/floating_ips/${id}`)
   }
@@ -49,8 +49,11 @@ export class FloatingIPs extends BaseAPI {
    * @param params Parameters for creating the Floating IP
    */
   async create(
-    params: CreateFloatingIPParams
-  ): Promise<{ success: true; response: { floating_ip: FloatingIP } } | { success: false; response: APIError }> {
+    params: CreateFloatingIPParams,
+  ): Promise<
+    | { success: true; response: { floating_ip: FloatingIP } }
+    | { success: false; response: APIError }
+  > {
     return this.request<{ floating_ip: FloatingIP }>("/floating_ips", {
       method: "POST",
       body: JSON.stringify(params),
@@ -64,8 +67,11 @@ export class FloatingIPs extends BaseAPI {
    */
   async update(
     id: number,
-    params: UpdateFloatingIPParams
-  ): Promise<{ success: true; response: { floating_ip: FloatingIP } } | { success: false; response: APIError }> {
+    params: UpdateFloatingIPParams,
+  ): Promise<
+    | { success: true; response: { floating_ip: FloatingIP } }
+    | { success: false; response: APIError }
+  > {
     return this.request<{ floating_ip: FloatingIP }>(`/floating_ips/${id}`, {
       method: "PUT",
       body: JSON.stringify(params),
@@ -77,7 +83,7 @@ export class FloatingIPs extends BaseAPI {
    * @param id The Floating IP ID
    */
   async delete(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: null } | { success: false; response: APIError }> {
     return this.request<null>(`/floating_ips/${id}`, {
       method: "DELETE",

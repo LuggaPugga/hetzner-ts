@@ -17,7 +17,7 @@ export class Networks extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListNetworksParams
+    params?: ListNetworksParams,
   ): Promise<
     { success: true; response: NetworksResponse } | { success: false; response: APIError }
   > {
@@ -38,7 +38,7 @@ export class Networks extends BaseAPI {
    * @param params Parameters for creating the Network
    */
   async create(
-    params: CreateNetworkParams
+    params: CreateNetworkParams,
   ): Promise<
     { success: true; response: { network: Network } } | { success: false; response: APIError }
   > {
@@ -53,7 +53,7 @@ export class Networks extends BaseAPI {
    * @param id The Network ID
    */
   async get(
-    id: number
+    id: number,
   ): Promise<
     { success: true; response: { network: Network } } | { success: false; response: APIError }
   > {
@@ -67,7 +67,7 @@ export class Networks extends BaseAPI {
    */
   async update(
     id: number,
-    params: UpdateNetworkParams
+    params: UpdateNetworkParams,
   ): Promise<
     { success: true; response: { network: Network } } | { success: false; response: APIError }
   > {
@@ -82,7 +82,7 @@ export class Networks extends BaseAPI {
    * @param id The Network ID
    */
   async delete(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: null } | { success: false; response: APIError }> {
     return this.request<null>(`/networks/${id}`, {
       method: "DELETE",

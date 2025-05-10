@@ -1,9 +1,7 @@
 import { expect, test } from "vitest"
 import { HetznerAPI } from "../../"
 
-const workingHetzner = new HetznerAPI(
-  process.env.HETZNER_API_KEY as string
-)
+const workingHetzner = new HetznerAPI(process.env.HETZNER_API_KEY as string)
 const invalidHetzner = new HetznerAPI("invalid-token")
 let placementGroupToDelete: number = 0
 function generateUniqueName(prefix: string = "") {
@@ -38,8 +36,8 @@ test("create a placement group and verify its properties", async () => {
       expect(listResult.response.placement_groups.length).toBeGreaterThan(0)
       expect(
         listResult.response.placement_groups.find(
-          (placementGroup) => placementGroup.id === result.response.placement_group.id
-        )
+          (placementGroup) => placementGroup.id === result.response.placement_group.id,
+        ),
       ).toBeDefined()
     }
   }

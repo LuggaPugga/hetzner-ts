@@ -15,7 +15,7 @@ export class Actions extends BaseAPI {
    * The API may return an array, even if the ID matches a single action.
    */
   async list(
-    id: number
+    id: number,
   ): Promise<
     { success: true; response: ActionsResponse } | { success: false; response: APIError }
   > {
@@ -26,7 +26,7 @@ export class Actions extends BaseAPI {
    * Returns a specific Action object.
    */
   async get(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: Action } | { success: false; response: APIError }> {
     return this.request<Action>(`/actions/${id}`)
   }

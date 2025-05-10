@@ -22,7 +22,7 @@ export class Locations extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListLocationsParams
+    params?: ListLocationsParams,
   ): Promise<
     { success: true; response: LocationsResponse } | { success: false; response: APIError }
   > {
@@ -44,7 +44,7 @@ export class Locations extends BaseAPI {
    * @param id The location ID
    */
   async get(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: Location } | { success: false; response: APIError }> {
     return this.request<Location>(`/locations/${id}`)
   }
@@ -56,7 +56,7 @@ export class Datacenters extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListDatacentersParams
+    params?: ListDatacentersParams,
   ): Promise<
     { success: true; response: DatacentersResponse } | { success: false; response: APIError }
   > {
@@ -78,7 +78,7 @@ export class Datacenters extends BaseAPI {
    * @param id The datacenter ID
    */
   async get(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: Datacenter } | { success: false; response: APIError }> {
     return this.request<Datacenter>(`/datacenters/${id}`)
   }

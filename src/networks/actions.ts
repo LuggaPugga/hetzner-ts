@@ -18,7 +18,7 @@ export class NetworkActions extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async listAll(
-    params?: ListNetworkActionsParams
+    params?: ListNetworkActionsParams,
   ): Promise<
     { success: true; response: NetworkActionsResponse } | { success: false; response: APIError }
   > {
@@ -32,7 +32,7 @@ export class NetworkActions extends BaseAPI {
     }
     const queryString = queryParams.toString()
     return this.request<NetworkActionsResponse>(
-      `/networks/actions${queryString ? `?${queryString}` : ""}`
+      `/networks/actions${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -41,7 +41,7 @@ export class NetworkActions extends BaseAPI {
    * @param actionId The action ID
    */
   async get(
-    actionId: number
+    actionId: number,
   ): Promise<{ success: true; response: NetworkAction } | { success: false; response: APIError }> {
     return this.request<NetworkAction>(`/networks/actions/${actionId}`)
   }
@@ -53,7 +53,7 @@ export class NetworkActions extends BaseAPI {
    */
   async listForNetwork(
     networkId: number,
-    params?: ListNetworkActionsParams
+    params?: ListNetworkActionsParams,
   ): Promise<
     { success: true; response: NetworkActionsResponse } | { success: false; response: APIError }
   > {
@@ -67,7 +67,7 @@ export class NetworkActions extends BaseAPI {
     }
     const queryString = queryParams.toString()
     return this.request<NetworkActionsResponse>(
-      `/networks/${networkId}/actions${queryString ? `?${queryString}` : ""}`
+      `/networks/${networkId}/actions${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -78,7 +78,7 @@ export class NetworkActions extends BaseAPI {
    */
   async getForNetwork(
     networkId: number,
-    actionId: number
+    actionId: number,
   ): Promise<{ success: true; response: NetworkAction } | { success: false; response: APIError }> {
     return this.request<NetworkAction>(`/networks/${networkId}/actions/${actionId}`)
   }
@@ -90,7 +90,7 @@ export class NetworkActions extends BaseAPI {
    */
   async addRoute(
     networkId: number,
-    params: AddRouteNetworkParams
+    params: AddRouteNetworkParams,
   ): Promise<{ success: true; response: NetworkAction } | { success: false; response: APIError }> {
     return this.request<NetworkAction>(`/networks/${networkId}/actions/add_route`, {
       method: "POST",
@@ -105,7 +105,7 @@ export class NetworkActions extends BaseAPI {
    */
   async deleteRoute(
     networkId: number,
-    params: DeleteRouteNetworkParams
+    params: DeleteRouteNetworkParams,
   ): Promise<{ success: true; response: NetworkAction } | { success: false; response: APIError }> {
     return this.request<NetworkAction>(`/networks/${networkId}/actions/delete_route`, {
       method: "POST",
@@ -120,7 +120,7 @@ export class NetworkActions extends BaseAPI {
    */
   async addSubnet(
     networkId: number,
-    params: AddSubnetNetworkParams
+    params: AddSubnetNetworkParams,
   ): Promise<{ success: true; response: NetworkAction } | { success: false; response: APIError }> {
     return this.request<NetworkAction>(`/networks/${networkId}/actions/add_subnet`, {
       method: "POST",
@@ -135,7 +135,7 @@ export class NetworkActions extends BaseAPI {
    */
   async deleteSubnet(
     networkId: number,
-    params: DeleteSubnetNetworkParams
+    params: DeleteSubnetNetworkParams,
   ): Promise<{ success: true; response: NetworkAction } | { success: false; response: APIError }> {
     return this.request<NetworkAction>(`/networks/${networkId}/actions/delete_subnet`, {
       method: "POST",
@@ -150,7 +150,7 @@ export class NetworkActions extends BaseAPI {
    */
   async changeIPRange(
     networkId: number,
-    params: ChangeIPRangeNetworkParams
+    params: ChangeIPRangeNetworkParams,
   ): Promise<{ success: true; response: NetworkAction } | { success: false; response: APIError }> {
     return this.request<NetworkAction>(`/networks/${networkId}/actions/change_ip_range`, {
       method: "POST",
@@ -165,7 +165,7 @@ export class NetworkActions extends BaseAPI {
    */
   async changeProtection(
     networkId: number,
-    params: ChangeProtectionNetworkParams
+    params: ChangeProtectionNetworkParams,
   ): Promise<{ success: true; response: NetworkAction } | { success: false; response: APIError }> {
     return this.request<NetworkAction>(`/networks/${networkId}/actions/change_protection`, {
       method: "POST",

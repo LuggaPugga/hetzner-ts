@@ -10,7 +10,7 @@ export class BaseAPI {
 
   public async request<T>(
     endpoint: string,
-    options: RequestInit = {}
+    options: RequestInit = {},
   ): Promise<{ success: true; response: T } | { success: false; response: APIError }> {
     const res = await fetch(`${this.baseUrl}${endpoint}`, {
       ...options,

@@ -1,9 +1,7 @@
 import { expect, test } from "vitest"
 import { HetznerAPI } from ".."
 
-const workingHetzner = new HetznerAPI(
-  process.env.HETZNER_API_KEY as string
-)
+const workingHetzner = new HetznerAPI(process.env.HETZNER_API_KEY as string)
 const invalidHetzner = new HetznerAPI("invalid-token")
 let serverToDelete: number = 0
 function generateUniqueName(prefix: string = "") {
@@ -40,7 +38,7 @@ test("create a server and verify its properties", async () => {
     if (listResult.success) {
       expect(listResult.response.servers.length).toBeGreaterThan(0)
       expect(
-        listResult.response.servers.find((server) => server.id === result.response.server.id)
+        listResult.response.servers.find((server) => server.id === result.response.server.id),
       ).toBeDefined()
     }
 

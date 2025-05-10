@@ -63,7 +63,7 @@ export class Firewalls extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListFirewallsParams
+    params?: ListFirewallsParams,
   ): Promise<
     { success: true; response: FirewallsResponse } | { success: false; response: APIError }
   > {
@@ -85,7 +85,7 @@ export class Firewalls extends BaseAPI {
    * @param params Parameters for creating the firewall
    */
   async create(
-    params: CreateFirewallParams
+    params: CreateFirewallParams,
   ): Promise<
     { success: true; response: FirewallCreateResponse } | { success: false; response: APIError }
   > {
@@ -100,7 +100,7 @@ export class Firewalls extends BaseAPI {
    * @param id The firewall ID
    */
   async get(
-    id: number
+    id: number,
   ): Promise<
     { success: true; response: { firewall: Firewall } } | { success: false; response: APIError }
   > {
@@ -114,7 +114,7 @@ export class Firewalls extends BaseAPI {
    */
   async update(
     id: number,
-    params: UpdateFirewallParams
+    params: UpdateFirewallParams,
   ): Promise<
     { success: true; response: { firewall: Firewall } } | { success: false; response: APIError }
   > {
@@ -129,7 +129,7 @@ export class Firewalls extends BaseAPI {
    * @param id The firewall ID
    */
   async delete(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: null } | { success: false; response: APIError }> {
     return this.request<null>(`/firewalls/${id}`, {
       method: "DELETE",

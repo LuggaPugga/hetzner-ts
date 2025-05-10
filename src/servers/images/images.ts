@@ -28,7 +28,7 @@ export class Images extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListImagesParams
+    params?: ListImagesParams,
   ): Promise<
     { success: true; response: ListImagesResponse } | { success: false; response: APIError }
   > {
@@ -45,7 +45,7 @@ export class Images extends BaseAPI {
   }
 
   async get(
-    id: number
+    id: number,
   ): Promise<
     { success: true; response: { image: Image } } | { success: false; response: APIError }
   > {
@@ -54,7 +54,7 @@ export class Images extends BaseAPI {
 
   async update(
     id: number,
-    params: UpdateImageParams
+    params: UpdateImageParams,
   ): Promise<
     { success: true; response: { image: Image } } | { success: false; response: APIError }
   > {
@@ -65,7 +65,7 @@ export class Images extends BaseAPI {
   }
 
   async delete(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: Action } | { success: false; response: APIError }> {
     return this.request<Action>(`/images/${id}`, {
       method: "DELETE",

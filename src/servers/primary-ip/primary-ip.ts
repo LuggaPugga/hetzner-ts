@@ -38,7 +38,7 @@ export class PrimaryIP extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListPrimaryIPsParams
+    params?: ListPrimaryIPsParams,
   ): Promise<
     { success: true; response: ListPrimaryIPResponse } | { success: false; response: APIError }
   > {
@@ -52,12 +52,12 @@ export class PrimaryIP extends BaseAPI {
     }
 
     return this.request<ListPrimaryIPResponse>(
-      `/primary_ips${queryParams ? `?${queryParams}` : ""}`
+      `/primary_ips${queryParams ? `?${queryParams}` : ""}`,
     )
   }
 
   async get(
-    id: number
+    id: number,
   ): Promise<
     | { success: true; response: { primary_ip: PrimaryIPType } }
     | { success: false; response: APIError }
@@ -66,7 +66,7 @@ export class PrimaryIP extends BaseAPI {
   }
 
   async create(
-    params: CreatePrimaryIPParams
+    params: CreatePrimaryIPParams,
   ): Promise<
     { success: true; response: CreatePrimaryIPResponse } | { success: false; response: APIError }
   > {
@@ -78,7 +78,7 @@ export class PrimaryIP extends BaseAPI {
 
   async update(
     id: number,
-    params: UpdatePrimaryIPParams
+    params: UpdatePrimaryIPParams,
   ): Promise<
     | { success: true; response: { primary_ip: PrimaryIPType } }
     | { success: false; response: APIError }
@@ -89,7 +89,7 @@ export class PrimaryIP extends BaseAPI {
     })
   }
   async delete(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: Action } | { success: false; response: APIError }> {
     return this.request<Action>(`/primary_ips/${id}`, {
       method: "DELETE",

@@ -14,7 +14,7 @@ export class ServerTypes extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListServerTypesParams
+    params?: ListServerTypesParams,
   ): Promise<
     { success: true; response: ServerTypesResponse } | { success: false; response: APIError }
   > {
@@ -31,7 +31,7 @@ export class ServerTypes extends BaseAPI {
   }
 
   async get(
-    id: number
+    id: number,
   ): Promise<
     | { success: true; response: { server_type: ServerType } }
     | { success: false; response: APIError }

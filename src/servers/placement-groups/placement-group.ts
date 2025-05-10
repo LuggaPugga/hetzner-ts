@@ -38,7 +38,7 @@ export class PlacementGroup extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListPlacementGroupsParams
+    params?: ListPlacementGroupsParams,
   ): Promise<
     | { success: true; response: ListPlacementGroupsResponse }
     | { success: false; response: APIError }
@@ -53,12 +53,12 @@ export class PlacementGroup extends BaseAPI {
     }
 
     return this.request<ListPlacementGroupsResponse>(
-      `/placement_groups${queryParams ? `?${queryParams}` : ""}`
+      `/placement_groups${queryParams ? `?${queryParams}` : ""}`,
     )
   }
 
   async get(
-    id: number
+    id: number,
   ): Promise<
     | { success: true; response: { placement_group: PlacementGroupType } }
     | { success: false; response: APIError }
@@ -67,7 +67,7 @@ export class PlacementGroup extends BaseAPI {
   }
 
   async create(
-    params: CreatePlacementGroupParams
+    params: CreatePlacementGroupParams,
   ): Promise<
     | { success: true; response: { placement_group: PlacementGroupType } }
     | { success: false; response: APIError }
@@ -80,7 +80,7 @@ export class PlacementGroup extends BaseAPI {
 
   async update(
     id: number,
-    params: UpdatePlacementGroupParams
+    params: UpdatePlacementGroupParams,
   ): Promise<
     | { success: true; response: { placement_group: PlacementGroupType } }
     | { success: false; response: APIError }
@@ -91,7 +91,7 @@ export class PlacementGroup extends BaseAPI {
     })
   }
   async delete(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: Action } | { success: false; response: APIError }> {
     return this.request<Action>(`/placement_groups/${id}`, {
       method: "DELETE",

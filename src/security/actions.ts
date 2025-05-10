@@ -32,7 +32,7 @@ export class CertificateActions extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListCertificateActionsParams
+    params?: ListCertificateActionsParams,
   ): Promise<
     { success: true; response: CertificateActionsResponse } | { success: false; response: APIError }
   > {
@@ -49,7 +49,7 @@ export class CertificateActions extends BaseAPI {
 
     const queryString = queryParams.toString()
     return this.request<CertificateActionsResponse>(
-      `/certificates/actions${queryString ? `?${queryString}` : ""}`
+      `/certificates/actions${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -58,7 +58,7 @@ export class CertificateActions extends BaseAPI {
    * @param actionId The action ID
    */
   async get(
-    actionId: number
+    actionId: number,
   ): Promise<
     { success: true; response: CertificateActionResponse } | { success: false; response: APIError }
   > {
@@ -72,7 +72,7 @@ export class CertificateActions extends BaseAPI {
    */
   async listForCertificate(
     certificateId: number,
-    params?: Omit<ListCertificateActionsParams, "id">
+    params?: Omit<ListCertificateActionsParams, "id">,
   ): Promise<
     { success: true; response: CertificateActionsResponse } | { success: false; response: APIError }
   > {
@@ -89,7 +89,7 @@ export class CertificateActions extends BaseAPI {
 
     const queryString = queryParams.toString()
     return this.request<CertificateActionsResponse>(
-      `/certificates/${certificateId}/actions${queryString ? `?${queryString}` : ""}`
+      `/certificates/${certificateId}/actions${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -100,12 +100,12 @@ export class CertificateActions extends BaseAPI {
    */
   async getForCertificate(
     certificateId: number,
-    actionId: number
+    actionId: number,
   ): Promise<
     { success: true; response: CertificateActionResponse } | { success: false; response: APIError }
   > {
     return this.request<CertificateActionResponse>(
-      `/certificates/${certificateId}/actions/${actionId}`
+      `/certificates/${certificateId}/actions/${actionId}`,
     )
   }
 
@@ -114,7 +114,7 @@ export class CertificateActions extends BaseAPI {
    * @param certificateId The certificate ID
    */
   async retry(
-    certificateId: number
+    certificateId: number,
   ): Promise<
     { success: true; response: CertificateActionResponse } | { success: false; response: APIError }
   > {

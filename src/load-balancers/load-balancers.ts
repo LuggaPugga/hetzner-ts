@@ -23,7 +23,7 @@ export class LoadBalancers extends BaseAPI {
    * List all Load Balancers
    */
   async list(
-    params?: ListLoadBalancersParams
+    params?: ListLoadBalancersParams,
   ): Promise<
     { success: true; response: LoadBalancersResponse } | { success: false; response: APIError }
   > {
@@ -37,7 +37,7 @@ export class LoadBalancers extends BaseAPI {
     }
     const queryString = queryParams.toString()
     return this.request<LoadBalancersResponse>(
-      `/load_balancers${queryString ? `?${queryString}` : ""}`
+      `/load_balancers${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -45,7 +45,7 @@ export class LoadBalancers extends BaseAPI {
    * Create a new Load Balancer
    */
   async create(
-    params: CreateLoadBalancerParams
+    params: CreateLoadBalancerParams,
   ): Promise<
     { success: true; response: CreateLoadBalancerResponse } | { success: false; response: APIError }
   > {
@@ -59,7 +59,7 @@ export class LoadBalancers extends BaseAPI {
    * Get a specific Load Balancer by ID
    */
   async get(
-    id: number
+    id: number,
   ): Promise<
     { success: true; response: LoadBalancerResponse } | { success: false; response: APIError }
   > {
@@ -71,7 +71,7 @@ export class LoadBalancers extends BaseAPI {
    */
   async update(
     id: number,
-    params: UpdateLoadBalancerParams
+    params: UpdateLoadBalancerParams,
   ): Promise<
     { success: true; response: LoadBalancerResponse } | { success: false; response: APIError }
   > {
@@ -98,7 +98,7 @@ export class LoadBalancers extends BaseAPI {
    */
   async getMetrics(
     id: number,
-    params: GetLoadBalancerMetricsParams
+    params: GetLoadBalancerMetricsParams,
   ): Promise<
     | { success: true; response: LoadBalancerMetricsResponse }
     | { success: false; response: APIError }
@@ -110,7 +110,7 @@ export class LoadBalancers extends BaseAPI {
       }
     })
     return this.request<LoadBalancerMetricsResponse>(
-      `/load_balancers/${id}/metrics?${queryParams.toString()}`
+      `/load_balancers/${id}/metrics?${queryParams.toString()}`,
     )
   }
 
@@ -119,7 +119,7 @@ export class LoadBalancers extends BaseAPI {
    * List all Load Balancer Types
    */
   async listTypes(
-    params?: ListLoadBalancerTypesParams
+    params?: ListLoadBalancerTypesParams,
   ): Promise<
     { success: true; response: LoadBalancerTypesResponse } | { success: false; response: APIError }
   > {
@@ -133,7 +133,7 @@ export class LoadBalancers extends BaseAPI {
     }
     const queryString = queryParams.toString()
     return this.request<LoadBalancerTypesResponse>(
-      `/load_balancer_types${queryString ? `?${queryString}` : ""}`
+      `/load_balancer_types${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -141,7 +141,7 @@ export class LoadBalancers extends BaseAPI {
    * Get a specific Load Balancer Type by ID
    */
   async getType(
-    id: number
+    id: number,
   ): Promise<
     { success: true; response: LoadBalancerTypeResponse } | { success: false; response: APIError }
   > {

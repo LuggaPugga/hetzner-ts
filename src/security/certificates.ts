@@ -24,7 +24,7 @@ export class Certificates extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListCertificatesParams
+    params?: ListCertificatesParams,
   ): Promise<
     { success: true; response: CertificatesResponse } | { success: false; response: APIError }
   > {
@@ -39,7 +39,7 @@ export class Certificates extends BaseAPI {
 
     const queryString = queryParams.toString()
     return this.request<CertificatesResponse>(
-      `/certificates${queryString ? `?${queryString}` : ""}`
+      `/certificates${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -48,7 +48,7 @@ export class Certificates extends BaseAPI {
    * @param id The certificate ID
    */
   async get(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: Certificate } | { success: false; response: APIError }> {
     return this.request<Certificate>(`/certificates/${id}`)
   }
@@ -58,7 +58,7 @@ export class Certificates extends BaseAPI {
    * @param params Parameters for creating the certificate
    */
   async create(
-    params: CreateCertificateParams
+    params: CreateCertificateParams,
   ): Promise<{ success: true; response: Certificate } | { success: false; response: APIError }> {
     return this.request<Certificate>("/certificates", {
       method: "POST",
@@ -73,7 +73,7 @@ export class Certificates extends BaseAPI {
    */
   async update(
     id: number,
-    params: UpdateCertificateParams
+    params: UpdateCertificateParams,
   ): Promise<{ success: true; response: Certificate } | { success: false; response: APIError }> {
     return this.request<Certificate>(`/certificates/${id}`, {
       method: "PUT",
@@ -86,7 +86,7 @@ export class Certificates extends BaseAPI {
    * @param id The certificate ID
    */
   async delete(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: null } | { success: false; response: APIError }> {
     return this.request<null>(`/certificates/${id}`, {
       method: "DELETE",

@@ -35,7 +35,7 @@ test("create a server and verify its properties", async () => {
     if (listResult.success) {
       expect(listResult.response.volumes.length).toBeGreaterThan(0)
       expect(
-        listResult.response.volumes.find((volume) => volume.id === result.response.volume.id)
+        listResult.response.volumes.find((volume) => volume.id === result.response.volume.id),
       ).toBeDefined()
     }
   }

@@ -33,8 +33,8 @@ test("list server types", async () => {
       expect(listResult.response.server_types.length).toBeGreaterThan(0)
       expect(
         listResult.response.server_types.find(
-          (serverType) => serverType.id === result.response.server_types[0]?.id
-        )
+          (serverType) => serverType.id === result.response.server_types[0]?.id,
+        ),
       ).toBeDefined()
     }
   }

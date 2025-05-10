@@ -18,7 +18,7 @@ export class Volumes extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListVolumesParams
+    params?: ListVolumesParams,
   ): Promise<
     { success: true; response: VolumesResponse } | { success: false; response: APIError }
   > {
@@ -43,7 +43,7 @@ export class Volumes extends BaseAPI {
    * @param id The Volume ID
    */
   async get(
-    id: number
+    id: number,
   ): Promise<
     { success: true; response: { volume: Volume } } | { success: false; response: APIError }
   > {
@@ -55,7 +55,7 @@ export class Volumes extends BaseAPI {
    * @param params Parameters for creating the Volume
    */
   async create(
-    params: CreateVolumeParams
+    params: CreateVolumeParams,
   ): Promise<
     | { success: true; response: { volume: Volume; action?: VolumeAction } }
     | { success: false; response: APIError }
@@ -74,7 +74,7 @@ export class Volumes extends BaseAPI {
    */
   async update(
     id: number,
-    params: UpdateVolumeParams
+    params: UpdateVolumeParams,
   ): Promise<
     { success: true; response: { volume: Volume } } | { success: false; response: APIError }
   > {
@@ -89,7 +89,7 @@ export class Volumes extends BaseAPI {
    * @param id The Volume ID
    */
   async delete(
-    id: number
+    id: number,
   ): Promise<
     | { success: true; response: null | { action: VolumeAction } }
     | { success: false; response: APIError }

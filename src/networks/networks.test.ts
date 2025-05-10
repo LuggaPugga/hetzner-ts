@@ -1,9 +1,7 @@
 import { expect, test } from "vitest"
 import { HetznerAPI } from ".."
 
-const workingHetzner = new HetznerAPI(
-  process.env.HETZNER_API_KEY as string
-)
+const workingHetzner = new HetznerAPI(process.env.HETZNER_API_KEY as string)
 const invalidHetzner = new HetznerAPI("invalid-token")
 let networkToDelete: number = 0
 function generateUniqueName(prefix: string = "") {
@@ -42,7 +40,7 @@ test("create a network and verify its properties", async () => {
     if (listResult.success) {
       expect(listResult.response.networks.length).toBeGreaterThan(0)
       expect(
-        listResult.response.networks.find((network) => network.id === result.response.network.id)
+        listResult.response.networks.find((network) => network.id === result.response.network.id),
       ).toBeDefined()
     }
   }

@@ -36,8 +36,8 @@ test("create and delete a server", async () => {
       expect(listResult.response.primary_ips.length).toBeGreaterThan(0)
       expect(
         listResult.response.primary_ips.find(
-          (primaryIP) => primaryIP.id === result.response.primary_ip.id
-        )
+          (primaryIP) => primaryIP.id === result.response.primary_ip.id,
+        ),
       ).toBeDefined()
     }
 

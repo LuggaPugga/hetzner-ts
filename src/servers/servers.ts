@@ -87,7 +87,7 @@ export class Servers extends BaseAPI {
   }
 
   async list(
-    params?: ListServersParams
+    params?: ListServersParams,
   ): Promise<
     { success: true; response: ServersResponse } | { success: false; response: APIError }
   > {
@@ -105,7 +105,7 @@ export class Servers extends BaseAPI {
   }
 
   async get(
-    id: number
+    id: number,
   ): Promise<
     { success: true; response: { server: Server } } | { success: false; response: APIError }
   > {
@@ -113,7 +113,7 @@ export class Servers extends BaseAPI {
   }
 
   async create(
-    params: CreateServerParams
+    params: CreateServerParams,
   ): Promise<
     | { success: true; response: { server: Server; action: Action } }
     | { success: false; response: APIError }
@@ -125,7 +125,7 @@ export class Servers extends BaseAPI {
   }
 
   async delete(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: Action } | { success: false; response: APIError }> {
     return this.request<Action>(`/servers/${id}`, {
       method: "DELETE",
@@ -137,12 +137,12 @@ export class Servers extends BaseAPI {
     type: MetricTypes,
     start: string,
     end: string,
-    step?: number
+    step?: number,
   ): Promise<
     { success: true; response: { metrics: Metrics } } | { success: false; response: APIError }
   > {
     return this.request<{ metrics: Metrics }>(
-      `/servers/${id}/metrics?type=${type}&start=${start}&end=${end}&step=${step}`
+      `/servers/${id}/metrics?type=${type}&start=${start}&end=${end}&step=${step}`,
     )
   }
 }

@@ -16,7 +16,7 @@ export class Isos extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListIsosParams
+    params?: ListIsosParams,
   ): Promise<
     { success: true; response: ListIsosResponse } | { success: false; response: APIError }
   > {
@@ -33,7 +33,7 @@ export class Isos extends BaseAPI {
   }
 
   async get(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: { iso: Isos } } | { success: false; response: APIError }> {
     return this.request<{ iso: Isos }>(`/isos/${id}`)
   }

@@ -23,7 +23,7 @@ export class LoadBalancerActions extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async listAllGlobal(
-    params?: ListLoadBalancerActionsParams
+    params?: ListLoadBalancerActionsParams,
   ): Promise<
     | { success: true; response: LoadBalancerActionsResponse }
     | { success: false; response: APIError }
@@ -42,7 +42,7 @@ export class LoadBalancerActions extends BaseAPI {
     }
     const queryString = queryParams.toString()
     return this.request<LoadBalancerActionsResponse>(
-      `/load_balancers/actions${queryString ? `?${queryString}` : ""}`
+      `/load_balancers/actions${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -51,7 +51,7 @@ export class LoadBalancerActions extends BaseAPI {
    * @param actionId The action ID
    */
   async getGlobalAction(
-    actionId: number
+    actionId: number,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
@@ -65,7 +65,7 @@ export class LoadBalancerActions extends BaseAPI {
    */
   async listForLoadBalancer(
     loadBalancerId: number,
-    params?: ListLoadBalancerActionsParams
+    params?: ListLoadBalancerActionsParams,
   ): Promise<
     | { success: true; response: LoadBalancerActionsResponse }
     | { success: false; response: APIError }
@@ -84,7 +84,7 @@ export class LoadBalancerActions extends BaseAPI {
     }
     const queryString = queryParams.toString()
     return this.request<LoadBalancerActionsResponse>(
-      `/load_balancers/${loadBalancerId}/actions${queryString ? `?${queryString}` : ""}`
+      `/load_balancers/${loadBalancerId}/actions${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -95,166 +95,166 @@ export class LoadBalancerActions extends BaseAPI {
    */
   async getAction(
     loadBalancerId: number,
-    actionId: number
+    actionId: number,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
-      `/load_balancers/${loadBalancerId}/actions/${actionId}`
+      `/load_balancers/${loadBalancerId}/actions/${actionId}`,
     )
   }
 
   async addService(
     loadBalancerId: number,
-    params: AddServiceLoadBalancerParams
+    params: AddServiceLoadBalancerParams,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/add_service`,
-      { method: "POST", body: JSON.stringify(params) }
+      { method: "POST", body: JSON.stringify(params) },
     )
   }
 
   async updateService(
     loadBalancerId: number,
-    params: UpdateServiceLoadBalancerParams
+    params: UpdateServiceLoadBalancerParams,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/update_service`,
-      { method: "POST", body: JSON.stringify(params) }
+      { method: "POST", body: JSON.stringify(params) },
     )
   }
 
   async deleteService(
     loadBalancerId: number,
-    params: DeleteServiceLoadBalancerParams
+    params: DeleteServiceLoadBalancerParams,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/delete_service`,
-      { method: "POST", body: JSON.stringify(params) }
+      { method: "POST", body: JSON.stringify(params) },
     )
   }
 
   async addTarget(
     loadBalancerId: number,
-    params: AddTargetLoadBalancerParams
+    params: AddTargetLoadBalancerParams,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/add_target`,
-      { method: "POST", body: JSON.stringify(params) }
+      { method: "POST", body: JSON.stringify(params) },
     )
   }
 
   async removeTarget(
     loadBalancerId: number,
-    params: RemoveTargetLoadBalancerParams
+    params: RemoveTargetLoadBalancerParams,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/remove_target`,
-      { method: "POST", body: JSON.stringify(params) }
+      { method: "POST", body: JSON.stringify(params) },
     )
   }
 
   async attachToNetwork(
     loadBalancerId: number,
-    params: AttachToNetworkLoadBalancerParams
+    params: AttachToNetworkLoadBalancerParams,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/attach_to_network`,
-      { method: "POST", body: JSON.stringify(params) }
+      { method: "POST", body: JSON.stringify(params) },
     )
   }
 
   async detachFromNetwork(
     loadBalancerId: number,
-    params: DetachFromNetworkLoadBalancerParams
+    params: DetachFromNetworkLoadBalancerParams,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/detach_from_network`,
-      { method: "POST", body: JSON.stringify(params) }
+      { method: "POST", body: JSON.stringify(params) },
     )
   }
 
   async changeAlgorithm(
     loadBalancerId: number,
-    params: ChangeAlgorithmLoadBalancerParams
+    params: ChangeAlgorithmLoadBalancerParams,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/change_algorithm`,
-      { method: "POST", body: JSON.stringify(params) }
+      { method: "POST", body: JSON.stringify(params) },
     )
   }
 
   async changeDNSPTR(
     loadBalancerId: number,
-    params: ChangeDNSPTRLoadBalancerParams
+    params: ChangeDNSPTRLoadBalancerParams,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/change_dns_ptr`,
-      { method: "POST", body: JSON.stringify(params) }
+      { method: "POST", body: JSON.stringify(params) },
     )
   }
 
   async changeProtection(
     loadBalancerId: number,
-    params: ChangeProtectionLoadBalancerParams
+    params: ChangeProtectionLoadBalancerParams,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/change_protection`,
-      { method: "POST", body: JSON.stringify(params) }
+      { method: "POST", body: JSON.stringify(params) },
     )
   }
 
   async changeType(
     loadBalancerId: number,
-    params: ChangeTypeLoadBalancerParams
+    params: ChangeTypeLoadBalancerParams,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/change_type`,
-      { method: "POST", body: JSON.stringify(params) }
+      { method: "POST", body: JSON.stringify(params) },
     )
   }
 
   async enablePublicInterface(
-    loadBalancerId: number
+    loadBalancerId: number,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/enable_public_interface`,
-      { method: "POST" }
+      { method: "POST" },
     )
   }
 
   async disablePublicInterface(
-    loadBalancerId: number
+    loadBalancerId: number,
   ): Promise<
     { success: true; response: LoadBalancerActionResponse } | { success: false; response: APIError }
   > {
     return this.request<LoadBalancerActionResponse>(
       `/load_balancers/${loadBalancerId}/actions/disable_public_interface`,
-      { method: "POST" }
+      { method: "POST" },
     )
   }
 }

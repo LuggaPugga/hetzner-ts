@@ -15,7 +15,7 @@ export class VolumeActions extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async listAll(
-    params?: ListVolumeActionsParams
+    params?: ListVolumeActionsParams,
   ): Promise<
     { success: true; response: VolumeActionsResponse } | { success: false; response: APIError }
   > {
@@ -34,7 +34,7 @@ export class VolumeActions extends BaseAPI {
     const queryString = queryParams.toString()
     // Assuming a /volumes/actions endpoint, adjust if different
     return this.request<VolumeActionsResponse>(
-      `/volumes/actions${queryString ? `?${queryString}` : ""}`
+      `/volumes/actions${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -43,8 +43,10 @@ export class VolumeActions extends BaseAPI {
    * @param actionId The action ID
    */
   async getGlobalAction(
-    actionId: number
-  ): Promise<{ success: true; response: { action: VolumeAction } } | { success: false; response: APIError }> {
+    actionId: number,
+  ): Promise<
+    { success: true; response: { action: VolumeAction } } | { success: false; response: APIError }
+  > {
     // Assuming a /volumes/actions/{id} endpoint, adjust if different
     return this.request<{ action: VolumeAction }>(`/volumes/actions/${actionId}`)
   }
@@ -56,7 +58,7 @@ export class VolumeActions extends BaseAPI {
    */
   async listForVolume(
     volumeId: number,
-    params?: ListVolumeActionsParams
+    params?: ListVolumeActionsParams,
   ): Promise<
     { success: true; response: VolumeActionsResponse } | { success: false; response: APIError }
   > {
@@ -74,7 +76,7 @@ export class VolumeActions extends BaseAPI {
     }
     const queryString = queryParams.toString()
     return this.request<VolumeActionsResponse>(
-      `/volumes/${volumeId}/actions${queryString ? `?${queryString}` : ""}`
+      `/volumes/${volumeId}/actions${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -85,7 +87,7 @@ export class VolumeActions extends BaseAPI {
    */
   async getAction(
     volumeId: number,
-    actionId: number
+    actionId: number,
   ): Promise<
     { success: true; response: { action: VolumeAction } } | { success: false; response: APIError }
   > {
@@ -99,7 +101,7 @@ export class VolumeActions extends BaseAPI {
    */
   async attach(
     volumeId: number,
-    params: AttachVolumeParams
+    params: AttachVolumeParams,
   ): Promise<
     { success: true; response: { action: VolumeAction } } | { success: false; response: APIError }
   > {
@@ -114,7 +116,7 @@ export class VolumeActions extends BaseAPI {
    * @param volumeId The Volume ID
    */
   async detach(
-    volumeId: number
+    volumeId: number,
   ): Promise<
     { success: true; response: { action: VolumeAction } } | { success: false; response: APIError }
   > {
@@ -130,7 +132,7 @@ export class VolumeActions extends BaseAPI {
    */
   async resize(
     volumeId: number,
-    params: ResizeVolumeParams
+    params: ResizeVolumeParams,
   ): Promise<
     { success: true; response: { action: VolumeAction } } | { success: false; response: APIError }
   > {
@@ -147,7 +149,7 @@ export class VolumeActions extends BaseAPI {
    */
   async changeProtection(
     volumeId: number,
-    params: ChangeVolumeProtectionParams
+    params: ChangeVolumeProtectionParams,
   ): Promise<
     { success: true; response: { action: VolumeAction } } | { success: false; response: APIError }
   > {
@@ -156,7 +158,7 @@ export class VolumeActions extends BaseAPI {
       {
         method: "POST",
         body: JSON.stringify(params),
-      }
+      },
     )
   }
 }

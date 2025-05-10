@@ -15,7 +15,7 @@ export class FloatingIPActions extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async listAll(
-    params?: ListFloatingIPActionsParams
+    params?: ListFloatingIPActionsParams,
   ): Promise<
     { success: true; response: FloatingIPActionsResponse } | { success: false; response: APIError }
   > {
@@ -29,7 +29,7 @@ export class FloatingIPActions extends BaseAPI {
     }
     const queryString = queryParams.toString()
     return this.request<FloatingIPActionsResponse>(
-      `/floating_ips/actions${queryString ? `?${queryString}` : ""}`
+      `/floating_ips/actions${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -38,7 +38,7 @@ export class FloatingIPActions extends BaseAPI {
    * @param actionId The action ID
    */
   async get(
-    actionId: number
+    actionId: number,
   ): Promise<
     { success: true; response: FloatingIPAction } | { success: false; response: APIError }
   > {
@@ -52,7 +52,7 @@ export class FloatingIPActions extends BaseAPI {
    */
   async listForFloatingIP(
     floatingIpId: number,
-    params?: ListFloatingIPActionsParams // Assuming similar params as listAll, adjust if different
+    params?: ListFloatingIPActionsParams, // Assuming similar params as listAll, adjust if different
   ): Promise<
     { success: true; response: FloatingIPActionsResponse } | { success: false; response: APIError }
   > {
@@ -66,7 +66,7 @@ export class FloatingIPActions extends BaseAPI {
     }
     const queryString = queryParams.toString()
     return this.request<FloatingIPActionsResponse>(
-      `/floating_ips/${floatingIpId}/actions${queryString ? `?${queryString}` : ""}`
+      `/floating_ips/${floatingIpId}/actions${queryString ? `?${queryString}` : ""}`,
     )
   }
 
@@ -77,7 +77,7 @@ export class FloatingIPActions extends BaseAPI {
    */
   async assign(
     floatingIpId: number,
-    params: AssignFloatingIPParams
+    params: AssignFloatingIPParams,
   ): Promise<
     { success: true; response: FloatingIPAction } | { success: false; response: APIError }
   > {
@@ -92,7 +92,7 @@ export class FloatingIPActions extends BaseAPI {
    * @param floatingIpId The Floating IP ID
    */
   async unassign(
-    floatingIpId: number
+    floatingIpId: number,
   ): Promise<
     { success: true; response: FloatingIPAction } | { success: false; response: APIError }
   > {
@@ -108,7 +108,7 @@ export class FloatingIPActions extends BaseAPI {
    */
   async changeDNSPTR(
     floatingIpId: number,
-    params: ChangeDNSPTRParams
+    params: ChangeDNSPTRParams,
   ): Promise<
     { success: true; response: FloatingIPAction } | { success: false; response: APIError }
   > {
@@ -125,7 +125,7 @@ export class FloatingIPActions extends BaseAPI {
    */
   async changeProtection(
     floatingIpId: number,
-    params: ChangeProtectionParams
+    params: ChangeProtectionParams,
   ): Promise<
     { success: true; response: FloatingIPAction } | { success: false; response: APIError }
   > {
@@ -134,7 +134,7 @@ export class FloatingIPActions extends BaseAPI {
       {
         method: "POST",
         body: JSON.stringify(params),
-      }
+      },
     )
   }
 
@@ -145,7 +145,7 @@ export class FloatingIPActions extends BaseAPI {
    */
   async getForFloatingIP(
     floatingIpId: number,
-    actionId: number
+    actionId: number,
   ): Promise<
     { success: true; response: FloatingIPAction } | { success: false; response: APIError }
   > {

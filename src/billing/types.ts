@@ -40,7 +40,6 @@ export interface LoadBalancerTypePriceEntry {
   prices: LocationPriceEntry[]
 }
 
-
 export interface PricingData {
   currency: string // ISO 4217
   vat_rate: string // decimal

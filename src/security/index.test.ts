@@ -1,9 +1,7 @@
 import { expect, test } from "vitest"
 import { HetznerAPI } from ".."
 
-const workingHetzner = new HetznerAPI(
-  process.env.HETZNER_API_KEY as string
-)
+const workingHetzner = new HetznerAPI(process.env.HETZNER_API_KEY as string)
 const invalidHetzner = new HetznerAPI("invalid-token")
 
 test("list ssh keys throws error if token is invalid", async () => {

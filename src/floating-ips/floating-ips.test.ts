@@ -2,9 +2,7 @@ import { expect, test } from "vitest"
 import { HetznerAPI } from ".."
 import { FloatingIPActions } from "./actions"
 
-const workingHetzner = new HetznerAPI(
-  process.env.HETZNER_API_KEY as string
-)
+const workingHetzner = new HetznerAPI(process.env.HETZNER_API_KEY as string)
 const invalidHetzner = new HetznerAPI("invalid-token")
 
 function generateUniqueName(prefix: string = "") {

@@ -19,7 +19,7 @@ export class SSHKeys extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async list(
-    params?: ListSSHKeysParams
+    params?: ListSSHKeysParams,
   ): Promise<
     { success: true; response: SSHKeysResponse } | { success: false; response: APIError }
   > {
@@ -41,7 +41,7 @@ export class SSHKeys extends BaseAPI {
    * @param id The SSH key ID
    */
   async get(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: SSHKey } | { success: false; response: APIError }> {
     return this.request<SSHKey>(`/ssh_keys/${id}`)
   }
@@ -51,7 +51,7 @@ export class SSHKeys extends BaseAPI {
    * @param params Parameters for creating the SSH key
    */
   async create(
-    params: CreateSSHKeyParams
+    params: CreateSSHKeyParams,
   ): Promise<{ success: true; response: SSHKey } | { success: false; response: APIError }> {
     return this.request<SSHKey>("/ssh_keys", {
       method: "POST",
@@ -66,7 +66,7 @@ export class SSHKeys extends BaseAPI {
    */
   async update(
     id: number,
-    params: UpdateSSHKeyParams
+    params: UpdateSSHKeyParams,
   ): Promise<{ success: true; response: SSHKey } | { success: false; response: APIError }> {
     return this.request<SSHKey>(`/ssh_keys/${id}`, {
       method: "PUT",
@@ -79,7 +79,7 @@ export class SSHKeys extends BaseAPI {
    * @param id The SSH key ID
    */
   async delete(
-    id: number
+    id: number,
   ): Promise<{ success: true; response: null } | { success: false; response: APIError }> {
     return this.request<null>(`/ssh_keys/${id}`, {
       method: "DELETE",
