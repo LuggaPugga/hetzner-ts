@@ -122,4 +122,14 @@ export class FirewallActions extends BaseAPI {
       `/firewalls/${firewallId}/actions${queryString ? `?${queryString}` : ""}`,
     )
   }
+
+  /**
+   * Returns a specific Action for a Firewall.
+   */
+  async getFirewallAction(
+    firewallId: number,
+    actionId: number,
+  ): Promise<{ success: true; response: { action: FirewallAction } } | { success: false; response: APIError }> {
+    return this.request<{ action: FirewallAction }>(`/firewalls/${firewallId}/actions/${actionId}`)
+  }
 }
