@@ -9,6 +9,13 @@ import type {
   UpdateNetworkParams,
 } from "./types"
 
+/**
+ * Networks API
+ *
+ * Networks is a private networks feature. These Networks are optional and they coexist with the public network that every Server has by default.
+ * https://docs.hetzner.cloud/#networks
+ *
+ */
 export class Networks extends BaseAPI {
   private _actions: NetworkActions | null = null
 
