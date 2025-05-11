@@ -6,7 +6,8 @@
   "scripts": {
     "test": "vitest",
     "format": "prettier --write .",
-    "docs": "typedoc --out docs"
+    "docs": "typedoc --out docs",
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@types/bun": "latest",
