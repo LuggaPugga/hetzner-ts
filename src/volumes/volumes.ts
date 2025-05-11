@@ -10,6 +10,13 @@ import type {
   VolumesResponse,
 } from "./types"
 
+/**
+ * Load Balancers Types API
+ *
+ * Volumes can be used to store data on a server.
+ * https://docs.hetzner.cloud/#volumes
+ *
+ */
 export class Volumes extends BaseAPI {
   private _actions: VolumeActions | null = null
 
