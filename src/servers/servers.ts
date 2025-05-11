@@ -7,6 +7,7 @@ import { PlacementGroup } from "./placement-groups/placement-group"
 import { Isos } from "./isos/isos"
 import type { ServersResponse, Server, Metrics, MetricTypes } from "./types"
 import { ServerTypes } from "./server-types/server-types"
+import { ServerActions } from "./actions/actions"
 
 export interface ListServersParams {
   name?: string
@@ -46,6 +47,7 @@ export class Servers extends BaseAPI {
   private _placementGroups: PlacementGroup | null = null
   private _isos: Isos | null = null
   private _serverTypes: ServerTypes | null = null
+  private _actions: ServerActions | null = null
   /**
    * List all servers with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
@@ -84,6 +86,13 @@ export class Servers extends BaseAPI {
       this._serverTypes = new ServerTypes(this.token)
     }
     return this._serverTypes
+  }
+
+  get actions(): ServerActions {
+    if (!this._actions) {
+      this._actions = new ServerActions(this.token)
+    }
+    return this._actions
   }
 
   async getAll(
