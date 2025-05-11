@@ -2,16 +2,18 @@ import { BaseAPI } from "../base"
 import type { APIError } from "../types"
 import type { Datacenter, DatacentersResponse, Location, LocationsResponse } from "./types"
 
+type SortableLocationField = "id" | "id:asc" | "id:desc" | "name" | "name:asc" | "name:desc"
+
 export interface ListLocationsParams {
   name?: string
-  sort?: "id" | "id:asc" | "id:desc" | "name" | "name:asc" | "name:desc"
+  sort?: SortableLocationField
   page?: number
   per_page?: number
 }
 
 export interface ListDatacentersParams {
   name?: string
-  sort?: "id" | "id:asc" | "id:desc" | "name" | "name:asc" | "name:desc"
+  sort?: SortableLocationField
   page?: number
   per_page?: number
 }
