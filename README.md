@@ -4,7 +4,7 @@ A fully-typed, promise-based TypeScript wrapper for the Hetzner Cloud API.
 Easily manage servers, volumes, networks, and more with a clean and modern interface.
 
 > [!IMPORTANT]
-> This project is actively being developed. While most API calls are fully typed and tested, some endpoints may have incomplete or inaccurate type definitions. Please report any type issues you encounter.
+> This project is still in active development. While most API calls are fully typed and tested, some endpoints may have incomplete or inaccurate type definitions. Please report any type issues you encounter.
 
 ## Features
 
