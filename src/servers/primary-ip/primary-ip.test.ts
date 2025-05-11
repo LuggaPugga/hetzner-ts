@@ -22,7 +22,6 @@ test("create and delete a server", async () => {
     datacenter: "fsn1",
     assignee_id: null,
   })
-  console.log(JSON.stringify(result, null, 2))
   expect(result.success).toBe(true)
   if (result.success) {
     expect(result.response).toBeTypeOf("object")
