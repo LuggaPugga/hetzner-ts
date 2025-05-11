@@ -10,7 +10,6 @@ import type {
   LoadBalancerActionResponse,
   LoadBalancerMetricsResponse,
   LoadBalancerResponse,
-  LoadBalancerTypeResponse,
   LoadBalancerTypesResponse,
   LoadBalancersResponse,
   UpdateLoadBalancerParams,
@@ -150,9 +149,9 @@ export class LoadBalancers extends BaseAPI {
   async getType(
     id: number,
   ): Promise<
-    { success: true; response: LoadBalancerTypeResponse } | { success: false; response: APIError }
+    { success: true; response: LoadBalancerTypesResponse } | { success: false; response: APIError }
   > {
-    return this.request<LoadBalancerTypeResponse>(`/load_balancer_types/${id}`)
+    return this.request<LoadBalancerTypesResponse>(`/load_balancer_types/${id}`)
   }
 
   get actions(): LoadBalancerActions {
