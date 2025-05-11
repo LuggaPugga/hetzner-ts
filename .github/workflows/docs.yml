@@ -21,10 +21,10 @@ jobs:
         run: bun docs
 
       - name: Upload docs artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           path: docs
-          name: docs-artifact
+          name: github-pages
 
   deploy:
     needs: build
