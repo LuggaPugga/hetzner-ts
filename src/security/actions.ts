@@ -26,6 +26,13 @@ export interface ListCertificateActionsParams {
   per_page?: number
 }
 
+/**
+ * Certificate Actions API
+ *
+ * Actions are the individual operations that can be performed on a certificate.
+ * https://docs.hetzner.cloud/#certificate-actions
+ *
+ */
 export class CertificateActions extends BaseAPI {
   /**
    * Get all actions for all certificates
