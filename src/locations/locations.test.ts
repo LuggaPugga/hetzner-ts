@@ -61,7 +61,7 @@ test("get datacenter throws error if token is invalid", async () => {
 })
 
 test("list locations with sort", async () => {
-  const result = await workingHetzner.locations.getAll({ sort: ["id:asc"] })
+  const result = await workingHetzner.locations.getAll({ sort: "id:asc" })
   expect(result.success).toBe(true)
   expect(result.response).toBeTypeOf("object")
 })
