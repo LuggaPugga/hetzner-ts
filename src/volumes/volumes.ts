@@ -1,12 +1,11 @@
 import { BaseAPI } from "../base"
-import type { APIError } from "../types"
+import type { APIError, BaseAction } from "../types"
 import { VolumeActions } from "./actions"
 import type {
   CreateVolumeParams,
   ListVolumesParams,
   UpdateVolumeParams,
   Volume,
-  VolumeAction,
   VolumesResponse,
 } from "./types"
 
@@ -64,11 +63,11 @@ export class Volumes extends BaseAPI {
   async create(
     params: CreateVolumeParams,
   ): Promise<
-    | { success: true; response: { volume: Volume; action?: VolumeAction } }
+    | { success: true; response: { volume: Volume; action?: BaseAction } }
     | { success: false; response: APIError }
   > {
     // The API might return an action object along with the volume upon creation
-    return this.request<{ volume: Volume; action?: VolumeAction }>("/volumes", {
+    return this.request<{ volume: Volume; action?: BaseAction }>("/volumes", {
       method: "POST",
       body: JSON.stringify(params),
     })
@@ -98,11 +97,11 @@ export class Volumes extends BaseAPI {
   async delete(
     id: number,
   ): Promise<
-    | { success: true; response: null | { action: VolumeAction } }
+    | { success: true; response: null | { action: BaseAction } }
     | { success: false; response: APIError }
   > {
     // Deleting a volume might return an action or just 204 No Content
-    return this.request<null | { action: VolumeAction }>(`/volumes/${id}`, {
+    return this.request<null | { action: BaseAction }>(`/volumes/${id}`, {
       method: "DELETE",
     })
   }

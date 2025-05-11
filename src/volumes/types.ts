@@ -84,13 +84,8 @@ export interface ChangeVolumeProtectionParams {
   delete: boolean
 }
 
-// Volume Actions
-export interface VolumeAction extends BaseAction {
-  // Specific fields for Volume actions, if any
-}
-
 export interface VolumeActionsResponse {
-  actions: VolumeAction[]
+  actions: BaseAction[]
   meta?: Meta
 }
 
