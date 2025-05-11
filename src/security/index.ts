@@ -13,6 +13,13 @@ export interface ListSSHKeysParams {
   per_page?: number
 }
 
+/**
+ * SSH Keys API
+ *
+ * SSH keys are used to authenticate with the server.
+ * https://docs.hetzner.cloud/#ssh-keys
+ *
+ */
 export class SSHKeys extends BaseAPI {
   /**
    * List all SSH keys with optional filtering and pagination
