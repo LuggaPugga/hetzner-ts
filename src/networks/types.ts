@@ -69,13 +69,8 @@ export interface UpdateNetworkParams {
   expose_routes_to_vswitch?: boolean
 }
 
-// Network Actions
-export interface NetworkAction extends BaseAction {
-  // Specific fields for Network actions, if any, beyond BaseAction
-}
-
 export interface NetworkActionsResponse {
-  actions: NetworkAction[]
+  actions: BaseAction[]
   meta?: Meta
 }
 
