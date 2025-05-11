@@ -31,10 +31,17 @@ export interface UpdatePrimaryIPParams {
   labels?: Record<string, string>
   auto_delete?: boolean
 }
+/**
+ * Primary Ips API
+ *
+ * Primary IPs help you to create more flexible networking setups.
+ * https://docs.hetzner.cloud/#primary-ips
+ *
+ */
 
 export class PrimaryIP extends BaseAPI {
   /**
-   * List all servers with optional filtering and pagination
+   * List all primary ips with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
   async list(
@@ -56,6 +63,10 @@ export class PrimaryIP extends BaseAPI {
     )
   }
 
+  /**
+   * Get a primary ip by id
+   * @param id The id of the primary ip
+   */
   async get(
     id: number,
   ): Promise<
@@ -65,6 +76,10 @@ export class PrimaryIP extends BaseAPI {
     return this.request<{ primary_ip: PrimaryIPType }>(`/primary_ips/${id}`)
   }
 
+  /**
+   * Create a primary ip
+   * @param params The parameters for creating the primary ip
+   */
   async create(
     params: CreatePrimaryIPParams,
   ): Promise<
@@ -76,6 +91,11 @@ export class PrimaryIP extends BaseAPI {
     })
   }
 
+  /**
+   * Update a primary ip
+   * @param id The id of the primary ip
+   * @param params The parameters for updating the primary ip
+   */
   async update(
     id: number,
     params: UpdatePrimaryIPParams,
@@ -88,6 +108,11 @@ export class PrimaryIP extends BaseAPI {
       body: JSON.stringify(params),
     })
   }
+
+  /**
+   * Delete a primary ip
+   * @param id The id of the primary ip
+   */
   async delete(
     id: number,
   ): Promise<{ success: true; response: Action } | { success: false; response: APIError }> {
