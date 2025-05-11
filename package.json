@@ -2,7 +2,7 @@
   "name": "hetzner-ts",
   "module": "index.ts",
   "type": "module",
-  "private": true,
+  "private": false,
   "scripts": {
     "test": "vitest",
     "format": "prettier --write .",
