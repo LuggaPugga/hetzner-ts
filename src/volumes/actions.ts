@@ -31,7 +31,6 @@ export class VolumeActions extends BaseAPI {
       })
     }
     const queryString = queryParams.toString()
-    // Assuming a /volumes/actions endpoint, adjust if different
     return this.request<VolumeActionsResponse>(
       `/volumes/actions${queryString ? `?${queryString}` : ""}`,
     )
