@@ -3,6 +3,8 @@
   "module": "index.ts",
   "type": "module",
   "private": false,
+  "keywords": ["hetzner", "hcloud", "typescript", "sdk", "api"],
+  "description": "A TypeScript SDK for the Hetzner Cloud API",
   "scripts": {
     "test": "vitest",
     "format": "prettier --write .",
