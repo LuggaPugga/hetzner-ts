@@ -10,9 +10,15 @@ export interface ListIsosParams {
   per_page?: number
 }
 
+/**
+ * Isos API
+ *
+ * Isos are used to create servers.
+ * https://docs.hetzner.cloud/#isos
+ */
 export class Isos extends BaseAPI {
   /**
-   * List all servers with optional filtering and pagination
+   * List all isos with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
   async list(
@@ -32,6 +38,10 @@ export class Isos extends BaseAPI {
     return this.request<ListIsosResponse>(`/isos${queryParams ? `?${queryParams}` : ""}`)
   }
 
+  /**
+   * Get an iso by id
+   * @param id The id of the iso
+   */
   async get(
     id: number,
   ): Promise<{ success: true; response: { iso: Isos } } | { success: false; response: APIError }> {
