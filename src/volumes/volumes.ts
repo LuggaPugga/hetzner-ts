@@ -10,7 +10,7 @@ import type {
 } from "./types"
 
 /**
- * Load Balancers Types API
+ * Volumes API
  *
  * Volumes can be used to store data on a server.
  * https://docs.hetzner.cloud/#volumes
