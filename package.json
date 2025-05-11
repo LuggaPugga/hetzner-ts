@@ -13,7 +13,7 @@
   ],
   "description": "A TypeScript SDK for the Hetzner Cloud API",
   "main": "dist/index.cjs",
-  "types": "dist/types.cjs",
+  "types": "dist/index.d.cts",
   "files": [
     "dist",
     "LICENSE",
