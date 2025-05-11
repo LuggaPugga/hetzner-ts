@@ -11,13 +11,6 @@ export interface ListLocationsParams {
   per_page?: number
 }
 
-export interface ListDatacentersParams {
-  name?: string
-  sort?: SortableLocationField
-  page?: number
-  per_page?: number
-}
-
 /**
  * Locations API
  *
@@ -65,7 +58,7 @@ export class Datacenters extends BaseAPI {
    * @param params Optional parameters for filtering and pagination
    */
   async getAll(
-    params?: ListDatacentersParams,
+    params?: ListLocationsParams,
   ): Promise<
     { success: true; response: DatacentersResponse } | { success: false; response: APIError }
   > {
