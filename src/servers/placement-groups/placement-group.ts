@@ -32,9 +32,15 @@ export interface UpdatePlacementGroupParams {
   labels?: Record<string, string>
 }
 
+/**
+ * Placement Groups API
+ *
+ * Placement groups help you to manage your servers in a specific datacenter.
+ * https://docs.hetzner.cloud/#placement-groups
+ */
 export class PlacementGroup extends BaseAPI {
   /**
-   * List all servers with optional filtering and pagination
+   * List all placement groups with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
   async list(
@@ -57,6 +63,10 @@ export class PlacementGroup extends BaseAPI {
     )
   }
 
+  /**
+   * Get a placement group by id
+   * @param id The id of the placement group
+   */
   async get(
     id: number,
   ): Promise<
@@ -66,6 +76,10 @@ export class PlacementGroup extends BaseAPI {
     return this.request<{ placement_group: PlacementGroupType }>(`/placement_groups/${id}`)
   }
 
+  /**
+   * Create a placement group
+   * @param params The parameters for creating the placement group
+   */
   async create(
     params: CreatePlacementGroupParams,
   ): Promise<
@@ -78,6 +92,11 @@ export class PlacementGroup extends BaseAPI {
     })
   }
 
+  /**
+   * Update a placement group
+   * @param id The id of the placement group
+   * @param params The parameters for updating the placement group
+   */
   async update(
     id: number,
     params: UpdatePlacementGroupParams,
@@ -90,6 +109,11 @@ export class PlacementGroup extends BaseAPI {
       body: JSON.stringify(params),
     })
   }
+
+  /**
+   * Delete a placement group
+   * @param id The id of the placement group
+   */
   async delete(
     id: number,
   ): Promise<{ success: true; response: Action } | { success: false; response: APIError }> {
