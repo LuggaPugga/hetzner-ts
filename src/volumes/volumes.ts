@@ -96,12 +96,8 @@ export class Volumes extends BaseAPI {
    */
   async delete(
     id: number,
-  ): Promise<
-    | { success: true; response: null | { action: BaseAction } }
-    | { success: false; response: APIError }
-  > {
-    // Deleting a volume might return an action or just 204 No Content
-    return this.request<null | { action: BaseAction }>(`/volumes/${id}`, {
+  ): Promise<{ success: true; response: null } | { success: false; response: APIError }> {
+    return this.request<null>(`/volumes/${id}`, {
       method: "DELETE",
     })
   }

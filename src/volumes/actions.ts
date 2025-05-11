@@ -1,11 +1,10 @@
 import { BaseAPI } from "../base"
-import type { APIError } from "../types"
+import type { APIError, BaseAction } from "../types"
 import type {
   AttachVolumeParams,
   ChangeVolumeProtectionParams,
   ListVolumeActionsParams,
   ResizeVolumeParams,
-  VolumeAction,
   VolumeActionsResponse,
 } from "./types"
 
@@ -45,10 +44,10 @@ export class VolumeActions extends BaseAPI {
   async getGlobalAction(
     actionId: number,
   ): Promise<
-    { success: true; response: { action: VolumeAction } } | { success: false; response: APIError }
+    { success: true; response: { action: BaseAction } } | { success: false; response: APIError }
   > {
     // Assuming a /volumes/actions/{id} endpoint, adjust if different
-    return this.request<{ action: VolumeAction }>(`/volumes/actions/${actionId}`)
+    return this.request<{ action: BaseAction }>(`/volumes/actions/${actionId}`)
   }
 
   /**
@@ -89,9 +88,9 @@ export class VolumeActions extends BaseAPI {
     volumeId: number,
     actionId: number,
   ): Promise<
-    { success: true; response: { action: VolumeAction } } | { success: false; response: APIError }
+    { success: true; response: { action: BaseAction } } | { success: false; response: APIError }
   > {
-    return this.request<{ action: VolumeAction }>(`/volumes/${volumeId}/actions/${actionId}`)
+    return this.request<{ action: BaseAction }>(`/volumes/${volumeId}/actions/${actionId}`)
   }
 
   /**
@@ -103,9 +102,9 @@ export class VolumeActions extends BaseAPI {
     volumeId: number,
     params: AttachVolumeParams,
   ): Promise<
-    { success: true; response: { action: VolumeAction } } | { success: false; response: APIError }
+    { success: true; response: { action: BaseAction } } | { success: false; response: APIError }
   > {
-    return this.request<{ action: VolumeAction }>(`/volumes/${volumeId}/actions/attach`, {
+    return this.request<{ action: BaseAction }>(`/volumes/${volumeId}/actions/attach`, {
       method: "POST",
       body: JSON.stringify(params),
     })
@@ -118,9 +117,9 @@ export class VolumeActions extends BaseAPI {
   async detach(
     volumeId: number,
   ): Promise<
-    { success: true; response: { action: VolumeAction } } | { success: false; response: APIError }
+    { success: true; response: { action: BaseAction } } | { success: false; response: APIError }
   > {
-    return this.request<{ action: VolumeAction }>(`/volumes/${volumeId}/actions/detach`, {
+    return this.request<{ action: BaseAction }>(`/volumes/${volumeId}/actions/detach`, {
       method: "POST",
     })
   }
@@ -134,9 +133,9 @@ export class VolumeActions extends BaseAPI {
     volumeId: number,
     params: ResizeVolumeParams,
   ): Promise<
-    { success: true; response: { action: VolumeAction } } | { success: false; response: APIError }
+    { success: true; response: { action: BaseAction } } | { success: false; response: APIError }
   > {
-    return this.request<{ action: VolumeAction }>(`/volumes/${volumeId}/actions/resize`, {
+    return this.request<{ action: BaseAction }>(`/volumes/${volumeId}/actions/resize`, {
       method: "POST",
       body: JSON.stringify(params),
     })
@@ -151,14 +150,11 @@ export class VolumeActions extends BaseAPI {
     volumeId: number,
     params: ChangeVolumeProtectionParams,
   ): Promise<
-    { success: true; response: { action: VolumeAction } } | { success: false; response: APIError }
+    { success: true; response: { action: BaseAction } } | { success: false; response: APIError }
   > {
-    return this.request<{ action: VolumeAction }>(
-      `/volumes/${volumeId}/actions/change_protection`,
-      {
-        method: "POST",
-        body: JSON.stringify(params),
-      },
-    )
+    return this.request<{ action: BaseAction }>(`/volumes/${volumeId}/actions/change_protection`, {
+      method: "POST",
+      body: JSON.stringify(params),
+    })
   }
 }
