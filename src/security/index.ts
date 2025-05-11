@@ -18,7 +18,7 @@ export class SSHKeys extends BaseAPI {
    * List all SSH keys with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListSSHKeysParams,
   ): Promise<
     { success: true; response: SSHKeysResponse } | { success: false; response: APIError }

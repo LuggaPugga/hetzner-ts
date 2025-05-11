@@ -14,7 +14,7 @@ export class VolumeActions extends BaseAPI {
    * List all actions for Volumes (globally, not for a specific volume)
    * @param params Optional parameters for filtering and pagination
    */
-  async listAll(
+  async getAll(
     params?: ListVolumeActionsParams,
   ): Promise<
     { success: true; response: VolumeActionsResponse } | { success: false; response: APIError }

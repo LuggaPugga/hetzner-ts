@@ -29,7 +29,7 @@ export class LoadBalancerActions extends BaseAPI {
    * List all global actions for Load Balancers
    * @param params Optional parameters for filtering and pagination
    */
-  async listAllGlobal(
+  async getAllGlobal(
     params?: ListLoadBalancerActionsParams,
   ): Promise<
     | { success: true; response: LoadBalancerActionsResponse }

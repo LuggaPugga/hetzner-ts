@@ -21,7 +21,7 @@ export class Isos extends BaseAPI {
    * List all isos with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListIsosParams,
   ): Promise<
     { success: true; response: ListIsosResponse } | { success: false; response: APIError }

@@ -33,7 +33,7 @@ export class Images extends BaseAPI {
    * List all images with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListImagesParams,
   ): Promise<
     { success: true; response: ListImagesResponse } | { success: false; response: APIError }

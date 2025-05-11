@@ -44,7 +44,7 @@ export class PrimaryIP extends BaseAPI {
    * List all primary ips with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListPrimaryIPsParams,
   ): Promise<
     { success: true; response: ListPrimaryIPResponse } | { success: false; response: APIError }

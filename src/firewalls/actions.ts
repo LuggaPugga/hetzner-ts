@@ -21,7 +21,7 @@ export class FirewallActions extends BaseAPI {
    * List all actions for firewalls
    * @param params Optional parameters for filtering and pagination
    */
-  async list(params?: {
+  async getAll(params?: {
     id?: number
     sort?: SortOption
     status?: ActionStatus

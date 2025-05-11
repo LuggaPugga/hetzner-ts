@@ -24,7 +24,7 @@ export class Volumes extends BaseAPI {
    * List all Volumes with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListVolumesParams,
   ): Promise<
     { success: true; response: VolumesResponse } | { success: false; response: APIError }

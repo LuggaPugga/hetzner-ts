@@ -28,7 +28,7 @@ export class LoadBalancers extends BaseAPI {
   /**
    * List all Load Balancers
    */
-  async list(
+  async getAll(
     params?: ListLoadBalancersParams,
   ): Promise<
     { success: true; response: LoadBalancersResponse } | { success: false; response: APIError }

@@ -14,7 +14,7 @@ export class FloatingIPActions extends BaseAPI {
    * List all actions for Floating IPs
    * @param params Optional parameters for filtering and pagination
    */
-  async listAll(
+  async getAll(
     params?: ListFloatingIPActionsParams,
   ): Promise<
     { success: true; response: FloatingIPActionsResponse } | { success: false; response: APIError }

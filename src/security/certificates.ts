@@ -23,7 +23,7 @@ export class Certificates extends BaseAPI {
    * List all certificates with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListCertificatesParams,
   ): Promise<
     { success: true; response: CertificatesResponse } | { success: false; response: APIError }

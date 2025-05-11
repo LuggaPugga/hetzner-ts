@@ -9,12 +9,12 @@ function generateUniqueName(prefix: string = "") {
 }
 
 test("list locations throws error if token is invalid", async () => {
-  const result = await invalidHetzner.locations.list()
+  const result = await invalidHetzner.locations.getAll()
   expect(result.success).toBe(false)
 })
 
 test("list locations is in type LocationsResponse", async () => {
-  const result = await workingHetzner.locations.list()
+  const result = await workingHetzner.locations.getAll()
   expect(result.success).toBe(true)
   if (result.success) {
     expect(result.response).toBeTypeOf("object")
@@ -40,12 +40,12 @@ test("get location throws error if location does not exist", async () => {
 })
 
 test("list firewalls throws error if token is invalid", async () => {
-  const result = await invalidHetzner.firewalls.list()
+  const result = await invalidHetzner.firewalls.getAll()
   expect(result.success).toBe(false)
 })
 
 test("list firewalls returns a list of firewalls", async () => {
-  const result = await workingHetzner.firewalls.list()
+  const result = await workingHetzner.firewalls.getAll()
   expect(result.success).toBe(true)
   if (result.success) {
     expect(result.response).toBeTypeOf("object")

@@ -86,7 +86,7 @@ export class Servers extends BaseAPI {
     return this._serverTypes
   }
 
-  async list(
+  async getAll(
     params?: ListServersParams,
   ): Promise<
     { success: true; response: ServersResponse } | { success: false; response: APIError }

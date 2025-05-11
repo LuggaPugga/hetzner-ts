@@ -9,12 +9,12 @@ function generateUniqueName(prefix: string = "") {
 }
 
 test("list load balancers throws error if token is invalid", async () => {
-  const result = await invalidHetzner.loadBalancers.list()
+  const result = await invalidHetzner.loadBalancers.getAll()
   expect(result.success).toBe(false)
 })
 
 test("list load balancers returns a list of load balancers", async () => {
-  const result = await workingHetzner.loadBalancers.list()
+  const result = await workingHetzner.loadBalancers.getAll()
   expect(result.success).toBe(true)
   expect(result.response).toBeTypeOf("object")
 })
@@ -25,7 +25,7 @@ test("get load balancer throws error if ", async () => {
 })
 
 test("get load balancer returns a load balancer", async () => {
-  const result = await workingHetzner.loadBalancers.list()
+  const result = await workingHetzner.loadBalancers.getAll()
   expect(result.success).toBe(true)
   expect(result.response).toBeTypeOf("object")
   if (result.success) {

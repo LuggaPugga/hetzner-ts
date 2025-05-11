@@ -9,7 +9,7 @@ function generateUniqueName(prefix: string = "") {
 }
 
 test("list networks throws error if token is invalid", async () => {
-  const result = await invalidHetzner.networks.list()
+  const result = await invalidHetzner.networks.getAll()
   expect(result.success).toBe(false)
 })
 
@@ -35,7 +35,7 @@ test("create a network and verify its properties", async () => {
     expect(result.response.network.protection).toBeTypeOf("object")
     expect(result.response.network.labels).toBeTypeOf("object")
 
-    const listResult = await workingHetzner.networks.list()
+    const listResult = await workingHetzner.networks.getAll()
     expect(listResult.success).toBe(true)
     if (listResult.success) {
       expect(listResult.response.networks.length).toBeGreaterThan(0)

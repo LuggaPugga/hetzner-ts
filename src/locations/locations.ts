@@ -28,7 +28,7 @@ export class Locations extends BaseAPI {
    * List all locations with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListLocationsParams,
   ): Promise<
     { success: true; response: LocationsResponse } | { success: false; response: APIError }
@@ -62,7 +62,7 @@ export class Datacenters extends BaseAPI {
    * List all datacenters with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListDatacentersParams,
   ): Promise<
     { success: true; response: DatacentersResponse } | { success: false; response: APIError }

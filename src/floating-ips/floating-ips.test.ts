@@ -10,12 +10,12 @@ function generateUniqueName(prefix: string = "") {
 }
 
 test("list floating IPs throws error if token is invalid", async () => {
-  const result = await invalidHetzner.floatingIps.list()
+  const result = await invalidHetzner.floatingIps.getAll()
   expect(result.success).toBe(false)
 })
 
 test("list floating IPs is in type FloatingIPsResponse", async () => {
-  const result = await workingHetzner.floatingIps.list()
+  const result = await workingHetzner.floatingIps.getAll()
   expect(result.success).toBe(true)
   if (result.success) {
     expect(result.response).toBeTypeOf("object")
@@ -32,7 +32,7 @@ test("get floating IP throws error if token is invalid", async () => {
 })
 
 test("get floating IP is in type FloatingIP", async () => {
-  const listResult = await workingHetzner.floatingIps.list()
+  const listResult = await workingHetzner.floatingIps.getAll()
   if (listResult.success && listResult.response.floating_ips.length > 0) {
     const floatingIpId = listResult.response.floating_ips[0]!.id
     const result = await workingHetzner.floatingIps.get(floatingIpId)

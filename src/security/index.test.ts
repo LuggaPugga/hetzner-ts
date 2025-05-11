@@ -5,12 +5,12 @@ const workingHetzner = new HetznerAPI(process.env.HETZNER_API_KEY as string)
 const invalidHetzner = new HetznerAPI("invalid-token")
 
 test("list ssh keys throws error if token is invalid", async () => {
-  const result = await invalidHetzner.sshKeys.list()
+  const result = await invalidHetzner.sshKeys.getAll()
   expect(result.success).toBe(false)
 })
 
 test("list ssh keys is in type SSHKeysResponse", async () => {
-  const result = await workingHetzner.sshKeys.list()
+  const result = await workingHetzner.sshKeys.getAll()
   expect(result.success).toBe(true)
   if (result.success) {
     expect(result.response).toBeTypeOf("object")

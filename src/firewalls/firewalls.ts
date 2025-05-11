@@ -62,7 +62,7 @@ export class Firewalls extends BaseAPI {
    * List all firewalls with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListFirewallsParams,
   ): Promise<
     { success: true; response: FirewallsResponse } | { success: false; response: APIError }

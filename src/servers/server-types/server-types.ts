@@ -13,7 +13,7 @@ export class ServerTypes extends BaseAPI {
    * List all servers with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListServerTypesParams,
   ): Promise<
     { success: true; response: ServerTypesResponse } | { success: false; response: APIError }

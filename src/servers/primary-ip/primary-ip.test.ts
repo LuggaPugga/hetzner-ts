@@ -9,7 +9,7 @@ function generateUniqueName(prefix: string = "") {
 }
 
 test("list servers throws error if token is invalid", async () => {
-  const result = await invalidHetzner.servers.primaryIP.list()
+  const result = await invalidHetzner.servers.primaryIP.getAll()
   expect(result.success).toBe(false)
 })
 
@@ -29,7 +29,7 @@ test("create and delete a server", async () => {
     expect(result.response.primary_ip.name).toBeTypeOf("string")
     expect(result.response.primary_ip.created).toBeTypeOf("string")
 
-    const listResult = await workingHetzner.servers.primaryIP.list()
+    const listResult = await workingHetzner.servers.primaryIP.getAll()
     expect(listResult.success).toBe(true)
     if (listResult.success) {
       expect(listResult.response.primary_ips.length).toBeGreaterThan(0)

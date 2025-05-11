@@ -23,7 +23,7 @@ export class Networks extends BaseAPI {
    * List all Networks with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListNetworksParams,
   ): Promise<
     { success: true; response: NetworksResponse } | { success: false; response: APIError }

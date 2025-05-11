@@ -5,12 +5,12 @@ const workingHetzner = new HetznerAPI(process.env.HETZNER_API_KEY as string)
 const invalidHetzner = new HetznerAPI("invalid-token")
 
 test("list locations throws error if token is invalid", async () => {
-  const result = await invalidHetzner.locations.list()
+  const result = await invalidHetzner.locations.getAll()
   expect(result.success).toBe(false)
 })
 
 test("list locations is in type LocationsResponse", async () => {
-  const result = await workingHetzner.locations.list()
+  const result = await workingHetzner.locations.getAll()
   expect(result.success).toBe(true)
   if (result.success) {
     expect(result.response).toBeTypeOf("object")
@@ -36,18 +36,18 @@ test("get location throws error if location does not exist", async () => {
 })
 
 test("list datacenters throws error if token is invalid", async () => {
-  const result = await invalidHetzner.datacenters.list()
+  const result = await invalidHetzner.datacenters.getAll()
   expect(result.success).toBe(false)
 })
 
 test("list datacenters is in type DatacentersResponse", async () => {
-  const result = await workingHetzner.datacenters.list()
+  const result = await workingHetzner.datacenters.getAll()
   expect(result.success).toBe(true)
   expect(result.response).toBeTypeOf("object")
 })
 
 test("get datacenter returns datacenter in type Datacenter", async () => {
-  const list = await workingHetzner.datacenters.list()
+  const list = await workingHetzner.datacenters.getAll()
   if (list.success && list.response.datacenters[0]) {
     const result = await workingHetzner.datacenters.get(list.response.datacenters[0].id)
     expect(result.success).toBe(true)

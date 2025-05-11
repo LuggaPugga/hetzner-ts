@@ -9,7 +9,7 @@ function generateUniqueName(prefix: string = "") {
 }
 
 test("list volumes throws error if token is invalid", async () => {
-  const result = await invalidHetzner.volumes.list()
+  const result = await invalidHetzner.volumes.getAll()
   expect(result.success).toBe(false)
 })
 
@@ -30,7 +30,7 @@ test("create a server and verify its properties", async () => {
     expect(result.response.volume.status).toBeTypeOf("string")
     expect(result.response.volume.created).toBeTypeOf("string")
 
-    const listResult = await workingHetzner.volumes.list()
+    const listResult = await workingHetzner.volumes.getAll()
     expect(listResult.success).toBe(true)
     if (listResult.success) {
       expect(listResult.response.volumes.length).toBeGreaterThan(0)

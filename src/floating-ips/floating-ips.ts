@@ -16,7 +16,7 @@ export class FloatingIPs extends BaseAPI {
    * List all Floating IPs with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListFloatingIPsParams,
   ): Promise<
     { success: true; response: FloatingIPsResponse } | { success: false; response: APIError }

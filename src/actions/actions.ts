@@ -14,7 +14,7 @@ export class Actions extends BaseAPI {
    * Returns a list of Action objects, filtered by the provided ID.
    * The API may return an array, even if the ID matches a single action.
    */
-  async list(
+  async getAll(
     id: number,
   ): Promise<
     { success: true; response: ActionsResponse } | { success: false; response: APIError }

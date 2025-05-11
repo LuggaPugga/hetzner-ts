@@ -24,7 +24,7 @@ export class NetworkActions extends BaseAPI {
    * List all actions for Networks
    * @param params Optional parameters for filtering and pagination
    */
-  async listAll(
+  async getAll(
     params?: ListNetworkActionsParams,
   ): Promise<
     { success: true; response: NetworkActionsResponse } | { success: false; response: APIError }

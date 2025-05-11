@@ -43,7 +43,7 @@ export class PlacementGroup extends BaseAPI {
    * List all placement groups with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListPlacementGroupsParams,
   ): Promise<
     | { success: true; response: ListPlacementGroupsResponse }

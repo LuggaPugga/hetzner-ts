@@ -31,7 +31,7 @@ export class CertificateActions extends BaseAPI {
    * Get all actions for all certificates
    * @param params Optional parameters for filtering and pagination
    */
-  async list(
+  async getAll(
     params?: ListCertificateActionsParams,
   ): Promise<
     { success: true; response: CertificateActionsResponse } | { success: false; response: APIError }
