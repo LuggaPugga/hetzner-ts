@@ -13,6 +13,10 @@ Easily manage servers, volumes, networks, and more with a clean and modern inter
 - Comprehensive: Supports all major Hetzner Cloud API endpoints
 - Extensible: Easily add custom endpoints or extend functionality
 
+## Documentation
+
+The full documentation is available at [https://luggapugga.github.io/hetzner-ts/](https://luggapugga.github.io/hetzner-ts/).
+
 ## Installation
 
 ```bash
