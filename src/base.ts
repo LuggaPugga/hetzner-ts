@@ -2,10 +2,11 @@ import type { APIError } from "./types"
 
 export class BaseAPI {
   protected token: string
-  protected baseUrl = "https://api.hetzner.cloud/v1"
+  protected baseUrl: string
 
-  constructor(token: string) {
+  constructor(token: string, baseUrl?: string) {
     this.token = token
+    this.baseUrl = baseUrl || "https://api.hetzner.cloud/v1"
   }
 
   public async request<T>(
