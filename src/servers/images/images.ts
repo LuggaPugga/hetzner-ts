@@ -22,9 +22,15 @@ export interface UpdateImageParams {
   labels?: Record<string, string>
 }
 
+/**
+ * Images API
+ *
+ * Images are used to create servers.
+ * https://docs.hetzner.cloud/#images
+ */
 export class Images extends BaseAPI {
   /**
-   * List all servers with optional filtering and pagination
+   * List all images with optional filtering and pagination
    * @param params Optional parameters for filtering and pagination
    */
   async list(
@@ -44,6 +50,10 @@ export class Images extends BaseAPI {
     return this.request<ListImagesResponse>(`/images${queryParams ? `?${queryParams}` : ""}`)
   }
 
+  /**
+   * Get an image by id
+   * @param id The id of the image
+   */
   async get(
     id: number,
   ): Promise<
@@ -52,6 +62,11 @@ export class Images extends BaseAPI {
     return this.request<{ image: Image }>(`/images/${id}`)
   }
 
+  /**
+   * Update an image
+   * @param id The id of the image
+   * @param params The parameters for updating the image
+   */
   async update(
     id: number,
     params: UpdateImageParams,
@@ -64,6 +79,10 @@ export class Images extends BaseAPI {
     })
   }
 
+  /**
+   * Delete an image
+   * @param id The id of the image
+   */
   async delete(
     id: number,
   ): Promise<{ success: true; response: Action } | { success: false; response: APIError }> {
