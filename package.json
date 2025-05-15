@@ -2,7 +2,7 @@
   "name": "hetzner-ts",
   "module": "dist/index.mjs",
   "type": "module",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "license": "MIT",
   "private": false,
   "keywords": [
