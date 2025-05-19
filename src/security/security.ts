@@ -49,8 +49,8 @@ export class SSHKeys extends BaseAPI {
    */
   async get(
     id: number,
-  ): Promise<{ success: true; response: SSHKey } | { success: false; response: APIError }> {
-    return this.request<SSHKey>(`/ssh_keys/${id}`)
+  ): Promise<{ success: true; response: { ssh_key: SSHKey } } | { success: false; response: APIError }> {
+    return this.request<{ ssh_key: SSHKey }>(`/ssh_keys/${id}`)
   }
 
   /**
@@ -59,8 +59,8 @@ export class SSHKeys extends BaseAPI {
    */
   async create(
     params: CreateSSHKeyParams,
-  ): Promise<{ success: true; response: SSHKey } | { success: false; response: APIError }> {
-    return this.request<SSHKey>("/ssh_keys", {
+  ): Promise<{ success: true; response: { ssh_key: SSHKey } } | { success: false; response: APIError }> {
+    return this.request<{ ssh_key: SSHKey }>("/ssh_keys", {
       method: "POST",
       body: JSON.stringify(params),
     })
@@ -74,8 +74,8 @@ export class SSHKeys extends BaseAPI {
   async update(
     id: number,
     params: UpdateSSHKeyParams,
-  ): Promise<{ success: true; response: SSHKey } | { success: false; response: APIError }> {
-    return this.request<SSHKey>(`/ssh_keys/${id}`, {
+  ): Promise<{ success: true; response: { ssh_key: SSHKey } } | { success: false; response: APIError }> {
+    return this.request<{ ssh_key: SSHKey }>(`/ssh_keys/${id}`, {
       method: "PUT",
       body: JSON.stringify(params),
     })
