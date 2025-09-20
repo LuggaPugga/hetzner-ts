@@ -1,16 +1,16 @@
-import { expect, test } from "vitest"
-import { HetznerAPI } from ".."
+import { expect, test } from "vitest";
+import { HetznerAPI } from "..";
 
-const workingHetzner = new HetznerAPI(process.env.HETZNER_API_KEY as string)
-const invalidHetzner = new HetznerAPI("invalid-token")
+const workingHetzner = new HetznerAPI(process.env.HETZNER_API_KEY as string);
+const invalidHetzner = new HetznerAPI("invalid-token");
 
 test("get actions throws error if token is invalid", async () => {
-  const result = await invalidHetzner.actions.getAll(1)
-  expect(result.success).toBe(false)
-})
+	const result = await invalidHetzner.actions.getAll(1);
+	expect(result.success).toBe(false);
+});
 
 test("get actions is in type ActionsResponse", async () => {
-  const result = await workingHetzner.actions.getAll(1)
-  expect(result.success).toBe(true)
-  expect(result.response).toBeTypeOf("object")
-})
+	const result = await workingHetzner.actions.getAll(1);
+	expect(result.success).toBe(true);
+	expect(result.response).toBeTypeOf("object");
+});

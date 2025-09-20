@@ -1,7 +1,7 @@
 {
-  "entryPointStrategy": "expand",
-  "entryPoints": ["src/*"],
-  "exclude": ["**/*.test.ts"],
-  "githubPages": true,
-  "out": "docs"
+	"entryPointStrategy": "expand",
+	"entryPoints": ["src/*"],
+	"exclude": ["**/*.test.ts"],
+	"githubPages": true,
+	"out": "docs"
 }

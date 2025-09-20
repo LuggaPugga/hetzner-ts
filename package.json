@@ -1,50 +1,50 @@
 {
-  "name": "hetzner-ts",
-  "module": "dist/index.js",
-  "type": "module",
-  "version": "1.0.10",
-  "license": "MIT",
-  "private": false,
-  "keywords": [
-    "hetzner",
-    "hcloud",
-    "typescript",
-    "sdk",
-    "api"
-  ],
-  "description": "A TypeScript SDK for the Hetzner Cloud API",
-  "main": "dist/index.cjs",
-  "types": "dist/index.d.ts",
-  "files": [
-    "dist",
-    "LICENSE",
-    "README.md"
-  ],
-  "scripts": {
-    "test": "vitest",
-    "format": "biome format --write .",
-    "docs": "typedoc --out docs",
-    "typecheck": "tsc --noEmit",
-    "build": "tsdown"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "2.2.4",
-    "@types/bun": "latest",
-    "tsdown": "^0.15.3",
-    "typedoc": "^0.28.4",
-    "vitest": "^3.1.3"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
-    }
-  }
+	"name": "hetzner-ts",
+	"module": "dist/index.js",
+	"type": "module",
+	"version": "1.0.10",
+	"license": "MIT",
+	"private": false,
+	"keywords": [
+		"hetzner",
+		"hcloud",
+		"typescript",
+		"sdk",
+		"api"
+	],
+	"description": "A TypeScript SDK for the Hetzner Cloud API",
+	"main": "dist/index.cjs",
+	"types": "dist/index.d.ts",
+	"files": [
+		"dist",
+		"LICENSE",
+		"README.md"
+	],
+	"scripts": {
+		"test": "vitest",
+		"format": "biome format --write .",
+		"docs": "typedoc --out docs",
+		"typecheck": "tsc --noEmit",
+		"build": "tsdown"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.2.4",
+		"@types/bun": "latest",
+		"tsdown": "^0.15.3",
+		"typedoc": "^0.28.4",
+		"vitest": "^3.1.3"
+	},
+	"peerDependencies": {
+		"typescript": "^5"
+	},
+	"exports": {
+		".": {
+			"types": "./dist/index.d.ts",
+			"import": "./dist/index.js",
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		}
+	}
 }
