@@ -25,12 +25,12 @@
     "format": "prettier --write .",
     "docs": "typedoc --out docs",
     "typecheck": "tsc --noEmit",
-    "build": "tsup"
+    "build": "tsdown"
   },
   "devDependencies": {
     "@types/bun": "latest",
     "prettier": "^3.5.3",
-    "tsup": "^8.4.0",
+    "tsdown": "^0.15.3",
     "typedoc": "^0.28.4",
     "vitest": "^3.1.3"
   },
