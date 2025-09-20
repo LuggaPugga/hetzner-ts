@@ -22,14 +22,14 @@
   ],
   "scripts": {
     "test": "vitest",
-    "format": "prettier --write .",
+    "format": "biome format --write .",
     "docs": "typedoc --out docs",
     "typecheck": "tsc --noEmit",
     "build": "tsdown"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.2.4",
     "@types/bun": "latest",
-    "prettier": "^3.5.3",
     "tsdown": "^0.15.3",
     "typedoc": "^0.28.4",
     "vitest": "^3.1.3"
