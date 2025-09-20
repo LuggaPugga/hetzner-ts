@@ -13,7 +13,7 @@ test("list volumes throws error if token is invalid", async () => {
   expect(result.success).toBe(false)
 })
 
-test("create a server and verify its properties", async () => {
+test("create a volume and verify its properties", async () => {
   const name = generateUniqueName("test-volume")
   const result = await workingHetzner.volumes.create({
     name,
